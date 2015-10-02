@@ -1,6 +1,9 @@
 package fi.oulu.tol.sqat;
 
-
+/**
+ * ItemDecorator Implementation for "Aged Brie" items
+ * @author matias
+ */
 public class BrieDecorator extends ItemDecorator {
 	public static final String ITEM_NAME = "Aged Brie";
 	

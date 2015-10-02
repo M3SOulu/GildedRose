@@ -1,5 +1,9 @@
 package fi.oulu.tol.sqat;
 
+/**
+ * ItemDecorator implementation for Conjured items
+ * @author matias
+ */
 public class ConjuredDecorator extends ItemDecorator {
 	public static final String ITEM_NAME = "Conjured Mana Cake";
 	
