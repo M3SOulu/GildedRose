@@ -133,6 +133,32 @@ public class GildedRoseTest {
 		}
 		assertEquals(10, quality);
 	}
+	
+	@Test
+	public void testConjuredQualityDecreaseTwiceAsFast() {
+		int quality = 0;
+		List<Item> items = new ArrayList();
+		items.add(new Item("Conjured Mana Cake", 3, 6));
+		rose = new GildedRose(items, 1);
+		Item conjuredManaCake = rose.getItemByName("Conjured");
+		if (conjuredManaCake != null) {
+			quality = conjuredManaCake.getQuality();
+		}
+		assertEquals(4, quality);
+	}
+	
+	@Test
+	public void testConjuredQualityDecreaseBy4WhenSellIn0() {
+		int quality = 0;
+		List<Item> items = new ArrayList();
+		items.add(new Item("Conjured Mana Cake", 0, 6));
+		rose = new GildedRose(items, 1);
+		Item conjuredManaCake = rose.getItemByName("Conjured");
+		if (conjuredManaCake != null) {
+			quality = conjuredManaCake.getQuality();
+		}
+		assertEquals(2, quality);
+	}
 
 	@Test
 	public void testTheTruth() {
