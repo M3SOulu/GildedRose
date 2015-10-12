@@ -18,3 +18,8 @@ RefactoringAction 1444649816163 GildedRoseTest.java ADD void testAgedBrieQuality
 RefactoringAction 1444649920291 GildedRoseTest.java RENAME testAgedBrieQualityIncreases()=>void testAgedBrieQualityIncreasesBy1I() METHOD
 RefactoringAction 1444649923891 GildedRoseTest.java RENAME testAgedBrieQualityIncreasesBy1I()=>void testAgedBrieQualityIncreasesBy1After1Day() METHOD
 EditAction 1444650029143 GildedRoseTest.java 3218 10 53 8
+UnitTestCaseAction 1444650030880 GildedRoseTest.java FAIL
+UnitTestSessionAction 1444650030884 GildedRoseTest (1) FAIL
+UnitTestCaseAction 1444650241213 GildedRoseTest.java FAIL
+UnitTestSessionAction 1444650241215 GildedRoseTest (1) FAIL
+EditAction 1444650395860 GildedRose.java 2894 5 15 0

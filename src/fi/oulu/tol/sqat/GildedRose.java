@@ -65,7 +65,7 @@ public class GildedRose {
 							item.setSellIn(sellIn - 1);
 						}
 					} else if (name.contains("Aged")) {
-						if (quality < 50 && quality > 0) {
+						if (quality < 50 && quality >= 0) {
 							item.setQuality(quality + 1);
 							item.setSellIn(sellIn - 1);
 						}
