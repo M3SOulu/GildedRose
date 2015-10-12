@@ -33,3 +33,4 @@ RefactoringAction 1444650716782 GildedRoseTest.java RENAME testAgedBrieQualityIn
 EditAction 1444650737852 GildedRoseTest.java 3586 11 60 9
 UnitTestCaseAction 1444650739485 GildedRoseTest.java OK
 UnitTestSessionAction 1444650739487 GildedRoseTest (1) OK
+EditAction 1444652107817 GildedRoseTest.java 3586 11 60 9
