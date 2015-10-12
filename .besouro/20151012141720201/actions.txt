@@ -10,3 +10,4 @@ RefactoringAction 1444649063427 GildedRoseTest.java ADD import org.junit.Before 
 RefactoringAction 1444649063428 GildedRoseTest.java ADD import fi.oulu.tol.sqat.GildedRose IMPORT
 RefactoringAction 1444649063429 GildedRoseTest.java ADD import fi.oulu.tol.sqat.Item IMPORT
 EditAction 1444649067433 GildedRoseTest.java 2856 9 46 7
+EditAction 1444649176343 GildedRose.java 2893 5 15 0
