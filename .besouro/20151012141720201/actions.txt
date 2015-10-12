@@ -31,3 +31,5 @@ RefactoringAction 1444650711539 GildedRoseTest.java RENAME testAgedBrieQualityIn
 RefactoringAction 1444650714120 GildedRoseTest.java RENAME testAgedBrieQualityIncreasesBy10After1Day()=>void testAgedBrieQualityIncreasesBy10After10Day() METHOD
 RefactoringAction 1444650716782 GildedRoseTest.java RENAME testAgedBrieQualityIncreasesBy10After10Day()=>void testAgedBrieQualityIncreasesBy10After10Days() METHOD
 EditAction 1444650737852 GildedRoseTest.java 3586 11 60 9
+UnitTestCaseAction 1444650739485 GildedRoseTest.java OK
+UnitTestSessionAction 1444650739487 GildedRoseTest (1) OK
