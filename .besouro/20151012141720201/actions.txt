@@ -2,3 +2,11 @@ FileOpenedAction 1444648641380 Item.java 674 7 9 0
 EditAction 1444648749949 GildedRose.java 2893 5 15 0
 EditAction 1444648755893 Item.java 674 7 9 0
 EditAction 1444648929237 GildedRose.java 2927 5 16 0
+FileOpenedAction 1444649051070 GildedRoseTest.java 2741 9 46 7
+FileOpenedAction 1444649059344 GildedRoseTest.java 196 1 1 1
+RefactoringAction 1444649063403 GildedRoseTest.java ADD import java.util.ArrayList IMPORT
+RefactoringAction 1444649063426 GildedRoseTest.java ADD import java.util.List IMPORT
+RefactoringAction 1444649063427 GildedRoseTest.java ADD import org.junit.Before IMPORT
+RefactoringAction 1444649063428 GildedRoseTest.java ADD import fi.oulu.tol.sqat.GildedRose IMPORT
+RefactoringAction 1444649063429 GildedRoseTest.java ADD import fi.oulu.tol.sqat.Item IMPORT
+EditAction 1444649067433 GildedRoseTest.java 2856 9 46 7
