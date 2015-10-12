@@ -118,7 +118,7 @@ public class GildedRoseTest {
 		if (agedBrie != null) {
 			quality = agedBrie.getQuality();
 		}
-		assertEquals(3, quality);
+		assertEquals(1, quality);
 	}
 
 	@Test
