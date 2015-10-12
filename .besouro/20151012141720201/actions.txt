@@ -34,3 +34,5 @@ EditAction 1444650737852 GildedRoseTest.java 3586 11 60 9
 UnitTestCaseAction 1444650739485 GildedRoseTest.java OK
 UnitTestSessionAction 1444650739487 GildedRoseTest (1) OK
 EditAction 1444652107817 GildedRoseTest.java 3586 11 60 9
+FileOpenedAction 1444652226526 SudokuVerifier.java 1485 2 11 0
+FileOpenedAction 1444652228358 TestSudokuVerifier.java 1944 5 18 4
