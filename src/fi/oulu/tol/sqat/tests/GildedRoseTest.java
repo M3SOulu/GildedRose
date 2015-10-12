@@ -107,6 +107,19 @@ public class GildedRoseTest {
 		}
 		assertEquals(13, quality);
 	}
+	
+	@Test
+	public void testAgedBrieQualityIncreasesBy1After1Day() {
+		int quality = 0;
+		List<Item> items = new ArrayList();
+		items.add(new Item("Aged Brie", 2, 0));
+		rose = new GildedRose(items, 1);
+		Item agedBrie = rose.getItemByName("Aged Brie");
+		if (agedBrie != null) {
+			quality = agedBrie.getQuality();
+		}
+		assertEquals(3, quality);
+	}
 
 	@Test
 	public void testTheTruth() {
