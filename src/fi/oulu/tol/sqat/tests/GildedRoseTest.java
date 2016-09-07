@@ -34,9 +34,23 @@ public class GildedRoseTest {
 		Item itemBrie = items.get(0);
 		assertEquals(11, itemBrie.getQuality());
 	}
-    
 	@Test
+	public void testUpdateEndOfDay_DexterityVest_Quality_20_19(){
+		// Arrange
+		GildedRose store = new GildedRose();
+		
+		store.addItem(new Item("+5 Dexterity Vest", 5, 20));
+		// Act
+		store.updateEndOfDay();
+		
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemBrie = items.get(0);
+		assertEquals(19, itemBrie.getQuality());
+	}
+	
+	/*@Test
 	public void testUpdateEndOfDay() {
 		fail("Test not implemented");
-	}
+	}*/
 }
