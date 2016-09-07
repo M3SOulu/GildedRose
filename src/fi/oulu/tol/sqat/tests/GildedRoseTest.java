@@ -45,8 +45,8 @@ public class GildedRoseTest {
 		
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(19, itemBrie.getQuality());
+		Item item = items.get(0);
+		assertEquals(19, item.getQuality());
 	}
 	public void testUpdateEndOfDay_DexterityVest_Quality_AfterSellIn_20_17(){
 		// Arrange
@@ -59,10 +59,9 @@ public class GildedRoseTest {
 
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(15, itemBrie.getQuality());
+		Item item = items.get(0);
+		assertEquals(15, item.getQuality());
 	}
-	
 	public void testUpdateEndOfDay_DexterityVest_Quality_0(){
 		// Arrange
 		GildedRose store = new GildedRose();
@@ -77,9 +76,10 @@ public class GildedRoseTest {
 
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(0, itemBrie.getQuality());
+		Item item = items.get(0);
+		assertEquals(0, item.getQuality());
 	}
+	
 	/*@Test
 	public void testUpdateEndOfDay() {
 		fail("Test not implemented");
