@@ -107,6 +107,7 @@ public class GildedRoseTest {
 		store.updateEndOfDay(); // Quality = 3
 		store.updateEndOfDay(); // Quality = 1
 		store.updateEndOfDay(); // Quality = 0
+		store.updateEndOfDay(); // Quality = 0
 
 		// Assert
 		List<Item> items = store.getItems();
