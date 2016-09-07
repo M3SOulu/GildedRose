@@ -34,7 +34,8 @@ public class GildedRoseTest {
 		Item itemBrie = items.get(0);
 		assertEquals(11, itemBrie.getQuality());
 	}
-    
+	
+	@Test
 	public void testUpdateEndOfDay_ElixirQualityAndSellIn() {
 
 		GildedRose store = new GildedRose ();
