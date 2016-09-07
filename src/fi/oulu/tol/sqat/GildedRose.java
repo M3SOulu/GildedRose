@@ -56,6 +56,8 @@ public class GildedRose {
                                 items.get(i).setQuality(items.get(i).getQuality() + 1);
                             }
                         }
+                        
+                       
                     }
                 }
             }
