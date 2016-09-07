@@ -1,0 +1,38 @@
+FileOpenedAction 1444648641380 Item.java 674 7 9 0
+EditAction 1444648749949 GildedRose.java 2893 5 15 0
+EditAction 1444648755893 Item.java 674 7 9 0
+EditAction 1444648929237 GildedRose.java 2927 5 16 0
+FileOpenedAction 1444649051070 GildedRoseTest.java 2741 9 46 7
+FileOpenedAction 1444649059344 GildedRoseTest.java 196 1 1 1
+RefactoringAction 1444649063403 GildedRoseTest.java ADD import java.util.ArrayList IMPORT
+RefactoringAction 1444649063426 GildedRoseTest.java ADD import java.util.List IMPORT
+RefactoringAction 1444649063427 GildedRoseTest.java ADD import org.junit.Before IMPORT
+RefactoringAction 1444649063428 GildedRoseTest.java ADD import fi.oulu.tol.sqat.GildedRose IMPORT
+RefactoringAction 1444649063429 GildedRoseTest.java ADD import fi.oulu.tol.sqat.Item IMPORT
+EditAction 1444649067433 GildedRoseTest.java 2856 9 46 7
+EditAction 1444649176343 GildedRose.java 2893 5 15 0
+UnitTestCaseAction 1444649178098 GildedRoseTest.java OK
+UnitTestSessionAction 1444649178108 GildedRoseTest (1) OK
+FileOpenedAction 1444649730593 GildedRoseTest.java 2856 9 46 7
+RefactoringAction 1444649816163 GildedRoseTest.java ADD void testAgedBrieQualityIncreases() METHOD
+RefactoringAction 1444649920291 GildedRoseTest.java RENAME testAgedBrieQualityIncreases()=>void testAgedBrieQualityIncreasesBy1I() METHOD
+RefactoringAction 1444649923891 GildedRoseTest.java RENAME testAgedBrieQualityIncreasesBy1I()=>void testAgedBrieQualityIncreasesBy1After1Day() METHOD
+EditAction 1444650029143 GildedRoseTest.java 3218 10 53 8
+UnitTestCaseAction 1444650030880 GildedRoseTest.java FAIL
+UnitTestSessionAction 1444650030884 GildedRoseTest (1) FAIL
+UnitTestCaseAction 1444650241213 GildedRoseTest.java FAIL
+UnitTestSessionAction 1444650241215 GildedRoseTest (1) FAIL
+EditAction 1444650395860 GildedRose.java 2894 5 15 0
+EditAction 1444650677948 GildedRoseTest.java 3218 10 53 8
+UnitTestCaseAction 1444650679010 GildedRoseTest.java OK
+UnitTestSessionAction 1444650679012 GildedRoseTest (1) OK
+RefactoringAction 1444650704860 GildedRoseTest.java ADD void testAgedBrieQualityIncreasesBy1After1Day()/2 METHOD
+RefactoringAction 1444650711539 GildedRoseTest.java RENAME testAgedBrieQualityIncreasesBy1After1Day()/2=>void testAgedBrieQualityIncreasesBy10After1Day() METHOD
+RefactoringAction 1444650714120 GildedRoseTest.java RENAME testAgedBrieQualityIncreasesBy10After1Day()=>void testAgedBrieQualityIncreasesBy10After10Day() METHOD
+RefactoringAction 1444650716782 GildedRoseTest.java RENAME testAgedBrieQualityIncreasesBy10After10Day()=>void testAgedBrieQualityIncreasesBy10After10Days() METHOD
+EditAction 1444650737852 GildedRoseTest.java 3586 11 60 9
+UnitTestCaseAction 1444650739485 GildedRoseTest.java OK
+UnitTestSessionAction 1444650739487 GildedRoseTest (1) OK
+EditAction 1444652107817 GildedRoseTest.java 3586 11 60 9
+FileOpenedAction 1444652226526 SudokuVerifier.java 1485 2 11 0
+FileOpenedAction 1444652228358 TestSudokuVerifier.java 1944 5 18 4

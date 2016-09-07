@@ -1,0 +1,9 @@
+FileOpenedAction 1444656071748 GildedRoseTest.java 3586 11 60 9
+RefactoringAction 1444656098256 GildedRoseTest.java ADD void testConjuredQualityDecreaseTwiceAsFast() METHOD
+RefactoringAction 1444656250054 GildedRoseTest.java ADD void testConjuredQualityDecreaseTwiceAsFast()/2 METHOD
+RefactoringAction 1444656255649 GildedRoseTest.java RENAME testConjuredQualityDecreaseTwiceAsFast()/2=>void testConjuredQualityDecreaseAsFast() METHOD
+RefactoringAction 1444656260741 GildedRoseTest.java RENAME testConjuredQualityDecreaseAsFast()=>void testConjuredQualityDecrease() METHOD
+RefactoringAction 1444656267308 GildedRoseTest.java RENAME testConjuredQualityDecrease()=>void testConjuredQualityDecrease4WhenSellIn() METHOD
+RefactoringAction 1444656268379 GildedRoseTest.java RENAME testConjuredQualityDecrease4WhenSellIn()=>void testConjuredQualityDecrease4WhenSellIn0() METHOD
+RefactoringAction 1444656272987 GildedRoseTest.java RENAME testConjuredQualityDecrease4WhenSellIn0()=>void testConjuredQualityDecreaseBy4WhenSellIn0() METHOD
+EditAction 1444656295590 GildedRoseTest.java 4373 13 74 11
