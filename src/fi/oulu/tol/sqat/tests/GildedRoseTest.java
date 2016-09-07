@@ -345,19 +345,9 @@ public class GildedRoseTest {
 		store.addItem(new Item("Aged Brie", 2, 10) );
 		
 		// Act
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
+
+		for (int i = 0; i < 20; i++)
+			store.updateEndOfDay();
 		
 		// Assert
 		List<Item> items = store.getItems();
@@ -387,16 +377,8 @@ public class GildedRoseTest {
 		store.addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80) );
 		
 		// Act
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
+		for (int i = 0; i < 10; i++)
+			store.updateEndOfDay();
 		
 		// Assert
 		List<Item> items = store.getItems();
@@ -411,106 +393,8 @@ public class GildedRoseTest {
 		store.addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80) );
 		
 		// Act
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
+		for (int i = 0; i < 100; i++)
+			store.updateEndOfDay();
 		
 		// Assert
 		List<Item> items = store.getItems();
@@ -750,9 +634,24 @@ public class GildedRoseTest {
 		Item itemBackstage = items.get(0);
 		assertEquals(0, itemBackstage.getQuality());
 	}
-	
+
 	@Test
-	public void testUpdateEndOfDay() {
-		fail("Test not implemented");
+	public void testUpdateEndOfDay_Add_Item() {
+		// Arrange
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("+5 Dexterity Vest", 0, 0) );
+
+		store.updateEndOfDay();
+
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemElixir = items.get(0);
+
+		assertEquals(itemElixir.getName(), "+5 Dexterity Vest");
 	}
+
+//	@Test
+//	public void testUpdateEndOfDay() {
+//		fail("Test not implemented");
+//	}
 }
