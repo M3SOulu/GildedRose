@@ -28,7 +28,7 @@ public class GildedRoseTest {
 		// Act
 		store.updateEndOfDay();
 		store.updateEndOfDay();
-		store.updateEndOfDay();
+		store.updateEndOfDay(); 
 		
 		// Assert
 		List<Item> items = store.getItems();
