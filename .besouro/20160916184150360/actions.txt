@@ -146,3 +146,41 @@ CompilationAction 1474040784152 SudokuVerifier.java
 CompilationAction 1474040784152 SudokuVerifier.java
 CompilationAction 1474040784152 SudokuVerifier.java
 EditAction 1474040787055 SudokuVerifier.java 886 5 7 0
+CompilationAction 1474040787265 SudokuVerifier.java
+CompilationAction 1474040787266 SudokuVerifier.java
+CompilationAction 1474040787266 SudokuVerifier.java
+CompilationAction 1474040787267 SudokuVerifier.java
+CompilationAction 1474040787268 SudokuVerifier.java
+CompilationAction 1474040787268 SudokuVerifier.java
+RefactoringAction 1474040796938 SudokuVerifier.java RENAME hasValidCharacters(String)=>boolean isAllCharactersValid(String) METHOD
+RefactoringAction 1474040799448 SudokuVerifier.java RENAME coColumnDuplicates(String)=>boolean isAllSubGridsUnique(String) METHOD
+RefactoringAction 1474040803972 SudokuVerifier.java RENAME hasRowDuplicates(String)=>boolean isAllRowElementsUnique(String) METHOD
+RefactoringAction 1474040805479 SudokuVerifier.java ADD boolean isAllRowElementsUnique(String)/2 METHOD
+RefactoringAction 1474040806987 SudokuVerifier.java RENAME isAllRowElementsUnique(String)/2=>boolean isAllRoElementsUnique(String) METHOD
+RefactoringAction 1474040808999 SudokuVerifier.java RENAME isAllRoElementsUnique(String)=>boolean isAllColumnElementsUnique(String) METHOD
+CompilationAction 1474040811424 SudokuVerifier.java
+CompilationAction 1474040811557 SudokuVerifier.java
+CompilationAction 1474040811558 SudokuVerifier.java
+CompilationAction 1474040883901 SudokuVerifier.java
+CompilationAction 1474040884054 SudokuVerifier.java
+CompilationAction 1474040884054 SudokuVerifier.java
+CompilationAction 1474040884054 SudokuVerifier.java
+CompilationAction 1474040892913 SudokuVerifier.java
+CompilationAction 1474040892913 SudokuVerifier.java
+CompilationAction 1474040893064 SudokuVerifier.java
+CompilationAction 1474040893064 SudokuVerifier.java
+CompilationAction 1474040898585 SudokuVerifier.java
+CompilationAction 1474040898738 SudokuVerifier.java
+CompilationAction 1474040898738 SudokuVerifier.java
+CompilationAction 1474040898739 SudokuVerifier.java
+RefactoringAction 1474040904174 SudokuVerifier.java RENAME isAllSubGridsUnique(String)=>boolean isAllSubGridElementsUnique(String) METHOD
+CompilationAction 1474040908121 SudokuVerifier.java
+CompilationAction 1474040908121 SudokuVerifier.java
+CompilationAction 1474040908289 SudokuVerifier.java
+CompilationAction 1474040908290 SudokuVerifier.java
+CompilationAction 1474040908290 SudokuVerifier.java
+CompilationAction 1474040921589 SudokuVerifier.java
+CompilationAction 1474040921590 SudokuVerifier.java
+CompilationAction 1474040921747 SudokuVerifier.java
+CompilationAction 1474040921748 SudokuVerifier.java
+EditAction 1474040924272 SudokuVerifier.java 1948 6 14 0
