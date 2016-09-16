@@ -16,3 +16,14 @@ RefactoringAction 1474040561430 Board.java ADD void setCell FIELD
 RefactoringAction 1474040563939 Board.java REMOVE setCell FIELD
 RefactoringAction 1474040567949 Board.java ADD void setCell() METHOD
 EditAction 1474040574464 Board.java 280 2 1 0
+CompilationAction 1474040574625 Board.java
+CompilationAction 1474040574625 Board.java
+CompilationAction 1474040574626 Board.java
+CompilationAction 1474040574626 SudokuVerifier.java
+CompilationAction 1474040574626 SudokuVerifier.java
+CompilationAction 1474040574627 SudokuVerifier.java
+CompilationAction 1474040574627 SudokuVerifier.java
+CompilationAction 1474040574627 SudokuVerifier.java
+RefactoringAction 1474040584520 Board.java ADD int getCell FIELD
+RefactoringAction 1474040604538 Board.java RENAME getCell=>int getCell(int) METHOD
+EditAction 1474040605501 Board.java 320 3 1 0
