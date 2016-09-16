@@ -133,3 +133,16 @@ CompilationAction 1474040765719 SudokuVerifier.java
 CompilationAction 1474040765719 SudokuVerifier.java
 CompilationAction 1474040765719 SudokuVerifier.java
 EditAction 1474040771730 SudokuVerifier.java 848 5 7 0
+CompilationAction 1474040771935 SudokuVerifier.java
+CompilationAction 1474040771935 SudokuVerifier.java
+CompilationAction 1474040771935 SudokuVerifier.java
+CompilationAction 1474040771935 SudokuVerifier.java
+CompilationAction 1474040771935 SudokuVerifier.java
+RefactoringAction 1474040783948 Board.java REMOVE Board.java CLASS
+CompilationAction 1474040784151 SudokuVerifier.java
+CompilationAction 1474040784152 SudokuVerifier.java
+CompilationAction 1474040784152 SudokuVerifier.java
+CompilationAction 1474040784152 SudokuVerifier.java
+CompilationAction 1474040784152 SudokuVerifier.java
+CompilationAction 1474040784152 SudokuVerifier.java
+EditAction 1474040787055 SudokuVerifier.java 886 5 7 0
