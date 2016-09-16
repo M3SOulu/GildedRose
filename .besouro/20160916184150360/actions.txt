@@ -1,0 +1,18 @@
+FileOpenedAction 1474040510472 GildedRoseTest.java 15474 33 306 33
+RefactoringAction 1474040533346 Board.java REMOVE isAllColumnElementsUnique() METHOD
+RefactoringAction 1474040533348 Board.java REMOVE isAllRowElementsUnique() METHOD
+RefactoringAction 1474040533349 Board.java REMOVE isSubGridsUnique() METHOD
+RefactoringAction 1474040533349 Board.java REMOVE hasValidCharacters() METHOD
+RefactoringAction 1474040533350 Board.java REMOVE gY FIELD
+CompilationAction 1474040545775 Board.java
+CompilationAction 1474040545775 Board.java
+CompilationAction 1474040545925 Board.java
+CompilationAction 1474040545925 SudokuVerifier.java
+CompilationAction 1474040545925 SudokuVerifier.java
+CompilationAction 1474040545926 SudokuVerifier.java
+CompilationAction 1474040545926 SudokuVerifier.java
+CompilationAction 1474040545926 SudokuVerifier.java
+RefactoringAction 1474040561430 Board.java ADD void setCell FIELD
+RefactoringAction 1474040563939 Board.java REMOVE setCell FIELD
+RefactoringAction 1474040567949 Board.java ADD void setCell() METHOD
+EditAction 1474040574464 Board.java 280 2 1 0
