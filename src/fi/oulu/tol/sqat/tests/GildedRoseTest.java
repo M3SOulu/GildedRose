@@ -23,7 +23,7 @@ public class GildedRoseTest {
 
 	private void updateDays(int days) {
 		for (int i = 0; i < days; i++) {
-			GildedRose.updateEndOfDay();
+			store.updateEndOfDay();
 		}
 	}
 
@@ -33,7 +33,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Aged Brie", 2, 10));
 
 		// Act
-		GildedRose.updateEndOfDay();
+		store.updateEndOfDay();
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -131,7 +131,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
 
 		// Act
-		GildedRose.updateEndOfDay();
+		store.updateEndOfDay();
 
 		// Assert
 		List<Item> items = store.getItems();

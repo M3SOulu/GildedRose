@@ -11,7 +11,7 @@ public class GildedRose {
 	public List<Item> getItems() {
 		return items;
 	}
-	
+
 	public void addItem(Item item) {
 		items.add(item);
 	}
@@ -19,11 +19,11 @@ public class GildedRose {
 	public GildedRose() {
 		items = new ArrayList<Item>();
 	}
-    public static void updateEndOfDay()
+    public void updateEndOfDay()
     {
         for (int i = 0; i < items.size(); i++)
         {
-            if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) 
+            if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
             {
                 if (items.get(i).getQuality() > 0)
                 {
