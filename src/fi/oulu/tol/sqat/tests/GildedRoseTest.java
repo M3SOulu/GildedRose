@@ -21,6 +21,12 @@ public class GildedRoseTest {
 
 	private GildedRose store = new GildedRose();
 
+	private void updateDays(int days) {
+		for (int i = 0; i < days; i++) {
+			GildedRose.updateEndOfDay();
+		}
+	}
+
 	@Test
 	public void testUpdateEndOfDay_AgedBrie_Quality_10To11_In1Day() {
 		// Arrange
@@ -41,9 +47,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Aged Brie", 2, 10));
 
 		// Act
-		for (int i = 0; i < 5; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(5);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -57,9 +61,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Aged Brie", 2, 10));
 
 		// Act
-		for (int i = 0; i < 20; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(20);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -73,9 +75,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Aged Brie", 2, 10));
 
 		// Act
-		for (int i = 0; i < 21; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(21);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -89,9 +89,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Aged Brie", 2, 10));
 
 		// Act
-		for (int i = 0; i < 100; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(100);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -105,9 +103,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("+5 Dexterity Vest", 10, 20));
 
 		// Act
-		GildedRose.updateEndOfDay();
-		GildedRose.updateEndOfDay();
-		GildedRose.updateEndOfDay();
+		updateDays(3);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -121,9 +117,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("+5 Dexterity Vest", 10, 20));
 
 		// Act
-		for (int i = 0; i < 50; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(50);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -151,9 +145,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
 
 		// Act
-		GildedRose.updateEndOfDay();
-		GildedRose.updateEndOfDay();
-		GildedRose.updateEndOfDay();
+		updateDays(3);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -167,9 +159,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 12, 20));
 
 		// Act
-		for (int i = 0; i < 10; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(10);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -183,9 +173,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 12, 20));
 
 		// Act
-		for (int i = 0; i < 13; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(13);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -199,8 +187,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Conjured Mana Cake", 3, 6));
 
 		// Act
-		GildedRose.updateEndOfDay();
-		GildedRose.updateEndOfDay();
+		updateDays(2);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -214,9 +201,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Conjured Mana Cake", 3, 6));
 
 		// Act
-		for (int i = 0; i < 4; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(4);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -230,9 +215,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Conjured Mana Cake", 3, 6));
 
 		// Act
-		for (int i = 0; i < 6; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(6);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -246,9 +229,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Elixir of the Mongoose", 5, 7));
 
 		// Act
-		for (int i = 0; i < 5; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(5);
 
 		// Assert
 		List<Item> items = store.getItems();
@@ -262,9 +243,7 @@ public class GildedRoseTest {
 		store.addItem(new Item("Elixir of the Mongoose", 5, 7));
 
 		// Act
-		for (int i = 0; i < 6; i++) {
-			GildedRose.updateEndOfDay();
-		}
+		updateDays(6);
 
 		// Assert
 		List<Item> items = store.getItems();
