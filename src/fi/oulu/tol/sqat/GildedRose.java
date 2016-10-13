@@ -22,56 +22,61 @@ public class GildedRose {
 
     public void updateEndOfDay() {
         for (Item item : items) {
-            // Sell-in value is decreased beforehand to simplify the code
-            item.decreaseSellIn();
+            updateItem(item);
+        }
+    }
 
-            String itemName = item.getName();
-            int itemSellIn = item.getSellIn();
+    private void updateItem(Item item) {
+        String itemName = item.getName();
 
-            // Legendary item, the quality never changes
-            if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
-                continue;
-            }
+        // Sell-in value is decreased already here to simplify the code,
+        // but the current value is used in calculations for clarity
+        int itemSellIn = item.getSellIn();
+        item.decreaseSellIn();
 
-            if (itemName.equals("Aged Brie")) {
+        // Legendary item, the quality never changes
+        if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
+            return;
+        }
+
+        if (itemName.equals("Aged Brie")) {
+            item.increaseQuality();
+
+            // Old brie's quality increases twice as fast
+            if (itemSellIn <= 0) {
                 item.increaseQuality();
-
-                // Old brie's quality increases twice as fast
-                if (itemSellIn < 0) {
-                    item.increaseQuality();
-                }
-
-                continue;
             }
 
-            if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                // Old concert
-                if (itemSellIn <= 0) {
-                    item.setQuality(0);
-                    continue;
-                }
+            return;
+        }
 
+        if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            // Old concert
+            if (itemSellIn <= 1) {
+                item.setQuality(0);
+                return;
+            }
+
+            item.increaseQuality();
+
+            // 10 days or less -> double speed
+            if (itemSellIn <= 10) {
                 item.increaseQuality();
-
-                // 10 days or less -> double speed
-                if (itemSellIn <= 9) {
-                    item.increaseQuality();
-                }
-
-                // 5 days or less -> triple speed!
-                if (itemSellIn <= 4) {
-                    item.increaseQuality();
-                }
-
-                continue;
             }
 
-            // Generic handling for all other items
+            // 5 days or less -> triple speed!
+            if (itemSellIn <= 5) {
+                item.increaseQuality();
+            }
+
+            return;
+        }
+
+        // Generic handling for all other items
+        // Quality drops twice as fast for old items
+        item.decreaseQuality();
+        if (itemSellIn <= 0) {
             item.decreaseQuality();
-
-            if (itemSellIn < 0) {
-                item.decreaseQuality();
-            }
         }
     }
 
