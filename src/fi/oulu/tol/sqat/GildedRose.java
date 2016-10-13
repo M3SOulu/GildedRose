@@ -24,40 +24,47 @@ public class GildedRose {
         for (Item item : items) {
             String itemName = item.getName();
 
+            item.decreaseSellIn();
+
+            // Legendary item, do nothing
             if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
                 continue;
             }
 
             if (itemName.equals("Aged Brie")) {
                 item.increaseQuality();
-            } else if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.getSellIn() <= 1) {
+
+                if (item.getSellIn() < 0) {
+                    item.increaseQuality();
+                }
+
+                continue;
+            }
+
+            if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (item.getSellIn() <= 0) {
                     item.setQuality(0);
                     continue;
                 }
 
                 item.increaseQuality();
 
-                if (item.getSellIn() <= 10) {
+                if (item.getSellIn() <= 9) {
                     item.increaseQuality();
                 }
 
-                if (item.getSellIn() <= 5) {
+                if (item.getSellIn() <= 4) {
                     item.increaseQuality();
                 }
-            } else {
-                item.decreaseQuality();
+
+                continue;
             }
 
-            item.decreaseSellIn();
+            // Generic handling for all other items
+
+            item.decreaseQuality();
 
             if (item.getSellIn() < 0) {
-                if (itemName.equals("Aged Brie"))
-                {
-                    item.increaseQuality();
-                    continue;
-                }
-
                 item.decreaseQuality();
             }
         }
