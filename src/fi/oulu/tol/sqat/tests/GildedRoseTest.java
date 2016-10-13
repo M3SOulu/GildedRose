@@ -447,6 +447,7 @@ public class GildedRoseTest {
 
         // Act
         store.updateEndOfDay();
+
         // Assert
         int quality = store.getItems().get(0).getQuality();
         String failMessage = "Quality of Backstage pass increases by 2 when there are 10 or less days";
@@ -460,6 +461,7 @@ public class GildedRoseTest {
 
         // Act
         store.updateEndOfDay();
+
         // Assert
         int quality = store.getItems().get(0).getQuality();
         String failMessage = "Quality of Backstage pass increases by 3 when there are 5 or less days";
@@ -473,6 +475,7 @@ public class GildedRoseTest {
 
         // Act
         store.updateEndOfDay();
+
         // Assert
         int quality = store.getItems().get(0).getQuality();
         String failMessage = "Quality of Backstage pass increases by 3 when there are 5 or less days";
@@ -486,6 +489,7 @@ public class GildedRoseTest {
 
         // Act
         store.updateEndOfDay();
+
         // Assert
         int quality = store.getItems().get(0).getQuality();
         String failMessage = "Quality of Backstage drops to 0 after the concert";
@@ -499,6 +503,7 @@ public class GildedRoseTest {
 
         // Act
         store.updateEndOfDay();
+
         // Assert
         int quality = store.getItems().get(0).getQuality();
         String failMessage = "The Quality of an item is never more than 50";
