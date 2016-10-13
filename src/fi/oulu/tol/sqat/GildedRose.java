@@ -26,39 +26,29 @@ public class GildedRose {
 
             if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
                 continue;
-            }
-
-            if ((!"Aged Brie".equals(itemName)) && !"Backstage passes to a TAFKAL80ETC concert".equals(itemName))
-            {
-                if (item.getQuality() > 0)
-                {
-                    item.decreaseQuality();
-                }
-            }
-            else
-            {
-                if (item.getQuality() < 50)
-                {
+            } else if (itemName.equals("Aged Brie")) {
+                if (item.getQuality() < 50) {
                     item.increaseQuality();
+                }
+            } else if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (item.getQuality() < 50) {
+                    item.increaseQuality();
+                }
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(itemName))
-                    {
-                        if (item.getSellIn() < 11)
-                        {
-                            if (item.getQuality() < 50)
-                            {
-                                item.increaseQuality();
-                            }
-                        }
-
-                        if (item.getSellIn() < 6)
-                        {
-                            if (item.getQuality() < 50)
-                            {
-                                item.increaseQuality();
-                            }
-                        }
+                if (item.getSellIn() < 11) {
+                    if (item.getQuality() < 50) {
+                        item.increaseQuality();
                     }
+                }
+
+                if (item.getSellIn() < 6) {
+                    if (item.getQuality() < 50) {
+                        item.increaseQuality();
+                    }
+                }
+            } else {
+                if (item.getQuality() > 0) {
+                    item.decreaseQuality();
                 }
             }
 
