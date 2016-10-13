@@ -80,8 +80,29 @@ public class GildedRose {
     			 qualityWhenSellInLessThanElevenDaysAndQualityUnderFifty(item);
                  qualityWhenSellInLessThanSixDaysAndQualityUnderFifty(item);
              }
-    		 
-    		 
+    		 else if (BRIE.equals(item.getName())){
+    			 if (isQualityLessThanFifty(item))
+                 {
+                     increaseQuality(item);
+                 }
+    			 if (isSellInUnderZero(item)){
+    				 decreaseSellIn(item);
+    			 }
+    		 }
+    		 else if (SULFURAS.equals(item.getName())){
+    			 increaseQuality(item);
+    			 decreaseQuality(item);
+    		 }
+    		 else {
+    			 if (isQualityAboveZero(item))
+                 {
+                     decreaseQuality(item);
+                 }
+    			 if (isSellInUnderZero(item)){
+    				 decreaseSellIn(item);
+    			 }
+    		 }
+    		/* 
 			if ((!BRIE.equals(item.getName())) && !BACKSTAGE.equals(item.getName())) 
             {
                 if (isQualityAboveZero(item))
@@ -131,7 +152,7 @@ public class GildedRose {
                         increaseQuality(item);
                     }
                 }
-            }
+            }*/
         }
     }
 }
