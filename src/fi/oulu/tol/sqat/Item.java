@@ -38,5 +38,8 @@ public class Item {
 	public void decreaseQuality() {
 		this.setQuality(--this.quality);
 	}
+	public void decreaseSellIn() {
+		this.setSellIn(--this.sellIn);
+	}
 }
 
