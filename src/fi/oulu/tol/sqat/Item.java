@@ -3,15 +3,15 @@ package fi.oulu.tol.sqat;
 
 public class Item {
     String name;
-    int sellIn; 
-    int quality; 
-    
+    int sellIn;
+    int quality;
+
     public Item(String name, int sellIn, int quality) {
 		this.setName(name);
 		this.setSellIn(sellIn);
 		this.setQuality(quality);
 	}
-    
+
 	/* Generated getter and setter code */
     public String getName() {
 		return name;
@@ -30,6 +30,13 @@ public class Item {
 	}
 	public void setQuality(int quality) {
 		this.quality = quality;
+	}
+
+	public void increaseQuality() {
+		this.setQuality(++this.quality);
+	}
+	public void decreaseQuality() {
+		this.setQuality(--this.quality);
 	}
 }
 
