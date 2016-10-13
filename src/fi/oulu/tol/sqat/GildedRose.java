@@ -25,8 +25,9 @@ public class GildedRose {
             String itemName = item.getName();
 
             item.decreaseSellIn();
+            int itemSellIn = item.getSellIn();
 
-            // Legendary item, do nothing
+            // Legendary item, the quality never changes
             if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
                 continue;
             }
@@ -34,7 +35,7 @@ public class GildedRose {
             if (itemName.equals("Aged Brie")) {
                 item.increaseQuality();
 
-                if (item.getSellIn() < 0) {
+                if (itemSellIn < 0) {
                     item.increaseQuality();
                 }
 
@@ -42,18 +43,18 @@ public class GildedRose {
             }
 
             if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.getSellIn() <= 0) {
+                if (itemSellIn <= 0) {
                     item.setQuality(0);
                     continue;
                 }
 
                 item.increaseQuality();
 
-                if (item.getSellIn() <= 9) {
+                if (itemSellIn <= 9) {
                     item.increaseQuality();
                 }
 
-                if (item.getSellIn() <= 4) {
+                if (itemSellIn <= 4) {
                     item.increaseQuality();
                 }
 
@@ -61,10 +62,9 @@ public class GildedRose {
             }
 
             // Generic handling for all other items
-
             item.decreaseQuality();
 
-            if (item.getSellIn() < 0) {
+            if (itemSellIn < 0) {
                 item.decreaseQuality();
             }
         }
