@@ -19,6 +19,43 @@ public class GildedRose {
 	public GildedRose() {
 		items = new ArrayList<Item>();
 	}
+	
+	private static boolean isSellInLessThanSix(Item item) {
+		return item.getSellIn() < 6;
+	}
+
+	private static boolean isSellInLessThanEleven(Item item) {
+		return item.getSellIn() < 11;
+	}
+
+	private static boolean isSellInUnderZero(Item item) {
+		return item.getSellIn() < 0;
+	}
+
+	private static boolean isQualityAboveFifty(Item item) {
+		return item.getQuality() < 50;
+	}
+
+	private static boolean isQualityAboveZero(Item item) {
+		return item.getQuality() > 0;
+	}
+
+	private static void updateQuality(Item item) {
+		item.setQuality(item.getQuality() - item.getQuality());
+	}
+
+	private static void decreaseQuality(Item item) {
+		item.setQuality(item.getQuality() - 1);
+	}
+
+	private static void decreaseSellIn(Item item) {
+		item.setSellIn(item.getSellIn() - 1);
+	}
+
+	private static void increaseQuality(Item item) {
+		item.setQuality(item.getQuality() + 1);
+	}
+	
     public static void updateEndOfDay()
     {
     	for(Item item:items)
@@ -26,7 +63,7 @@ public class GildedRose {
 			if ((!"Aged Brie".equals(item.getName())) && 
             		!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) 
             {
-                if (isQualityMoreThanZero(item))
+                if (isQualityAboveZero(item))
                 {
                     if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
                     {
@@ -42,7 +79,7 @@ public class GildedRose {
 
                     if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
                     {
-                        if (item.getSellIn() < 11)
+                        if (isSellInLessThanEleven(item))
                         {
                             if (isQualityAboveFifty(item))
                             {
@@ -50,7 +87,7 @@ public class GildedRose {
                             }
                         }
 
-                        if (item.getSellIn() < 6)
+                        if (isSellInLessThanSix(item))
                         {
                             if (isQualityAboveFifty(item))
                             {
@@ -66,13 +103,13 @@ public class GildedRose {
                 decreaseSellIn(item);
             }
 
-            if (item.getSellIn() < 0)
+            if (isSellInUnderZero(item))
             {
                 if (!"Aged Brie".equals(item.getName()))
                 {
                     if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
                     {
-                        if (isQualityMoreThanZero(item))
+                        if (isQualityAboveZero(item))
                         {
                             if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
                             {
@@ -95,29 +132,5 @@ public class GildedRose {
             }
         }
     }
-
-	private static boolean isQualityAboveFifty(Item item) {
-		return item.getQuality() < 50;
-	}
-
-	private static boolean isQualityMoreThanZero(Item item) {
-		return item.getQuality() > 0;
-	}
-
-	private static void updateQuality(Item item) {
-		item.setQuality(item.getQuality() - item.getQuality());
-	}
-
-	private static void decreaseQuality(Item item) {
-		item.setQuality(item.getQuality() - 1);
-	}
-
-	private static void decreaseSellIn(Item item) {
-		item.setSellIn(item.getSellIn() - 1);
-	}
-
-	private static void increaseQuality(Item item) {
-		item.setQuality(item.getQuality() + 1);
-	}
-
 }
+
