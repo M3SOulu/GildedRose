@@ -26,18 +26,23 @@ public class GildedRose {
         }
     }
 
+    /**
+     * Update an item's quality and sell-in value
+     */
     private void updateItem(Item item) {
         String itemName = item.getName();
+
+        // Legendary item, do nothing
+        if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
+            return;
+        }
+
 
         // Sell-in value is decreased already here to simplify the code,
         // but the current value is used in calculations for clarity
         int itemSellIn = item.getSellIn();
         item.decreaseSellIn();
 
-        // Legendary item, the quality never changes
-        if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
-            return;
-        }
 
         if (itemName.equals("Aged Brie")) {
             item.increaseQuality();
@@ -49,6 +54,7 @@ public class GildedRose {
 
             return;
         }
+
 
         if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
             // Old concert
@@ -72,7 +78,8 @@ public class GildedRose {
             return;
         }
 
-        // Generic handling for all other items
+
+        // Generic handling for all other items.
         // Quality drops twice as fast for old items
         item.decreaseQuality();
         if (itemSellIn <= 0) {
