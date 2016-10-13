@@ -32,12 +32,27 @@ public class Item {
 		this.quality = quality;
 	}
 
+	/**
+	 * Increase quality by one, max is 50.
+	 */
 	public void increaseQuality() {
-		this.setQuality(++this.quality);
+		if (this.quality < 50) {
+			this.setQuality(++this.quality);
+		}
 	}
+
+	/**
+	 * Decrease quality by one, min is 0.
+	 */
 	public void decreaseQuality() {
-		this.setQuality(--this.quality);
+		if (this.quality > 0) {
+			this.setQuality(--this.quality);
+		}
 	}
+
+	/**
+	 * Decrease sell-in value by one.
+	 */
 	public void decreaseSellIn() {
 		this.setSellIn(--this.sellIn);
 	}
