@@ -11,7 +11,7 @@ public class GildedRose {
 	public List<Item> getItems() {
 		return items;
 	}
-	
+
 	public void addItem(Item item) {
 		items.add(item);
 	}
@@ -19,79 +19,71 @@ public class GildedRose {
 	public GildedRose() {
 		items = new ArrayList<Item>();
 	}
-    public static void updateEndOfDay()
-    {
-        for (int i = 0; i < items.size(); i++)
-        {
-            if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) 
-            {
-                if (items.get(i).getQuality() > 0)
-                {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
-                    {
-                        items.get(i).setQuality(items.get(i).getQuality() - 1);
-                    }
-                }
-            }
-            else
-            {
-                if (items.get(i).getQuality() < 50)
-                {
-                    items.get(i).setQuality(items.get(i).getQuality() + 1);
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
-                    {
-                        if (items.get(i).getSellIn() < 11)
-                        {
-                            if (items.get(i).getQuality() < 50)
-                            {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
-                            }
-                        }
+    public void updateEndOfDay() {
+        for (Item item : items) {
+            updateItem(item);
+        }
+    }
 
-                        if (items.get(i).getSellIn() < 6)
-                        {
-                            if (items.get(i).getQuality() < 50)
-                            {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
-                            }
-                        }
-                    }
-                }
+    /**
+     * Update an item's quality and sell-in value
+     */
+    private void updateItem(Item item) {
+        String itemName = item.getName();
+
+        // Legendary item, do nothing
+        if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
+            return;
+        }
+
+
+        // Sell-in value is decreased already here to simplify the code,
+        // but the current value is used in calculations for clarity
+        int itemSellIn = item.getSellIn();
+        item.decreaseSellIn();
+
+
+        if (itemName.equals("Aged Brie")) {
+            item.increaseQuality();
+
+            // Old brie's quality increases twice as fast
+            if (itemSellIn <= 0) {
+                item.increaseQuality();
             }
 
-            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
-            {
-                items.get(i).setSellIn(items.get(i).getSellIn() - 1);
+            return;
+        }
+
+
+        if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            // Old concert
+            if (itemSellIn <= 1) {
+                item.setQuality(0);
+                return;
             }
 
-            if (items.get(i).getSellIn() < 0)
-            {
-                if (!"Aged Brie".equals(items.get(i).getName()))
-                {
-                    if (!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
-                    {
-                        if (items.get(i).getQuality() > 0)
-                        {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
-                            {
-                                items.get(i).setQuality(items.get(i).getQuality() - 1);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        items.get(i).setQuality(items.get(i).getQuality() - items.get(i).getQuality());
-                    }
-                }
-                else
-                {
-                    if (items.get(i).getQuality() < 50)
-                    {
-                        items.get(i).setQuality(items.get(i).getQuality() + 1);
-                    }
-                }
+            item.increaseQuality();
+
+            // 10 days or less -> double speed
+            if (itemSellIn <= 10) {
+                item.increaseQuality();
             }
+
+            // 5 days or less -> triple speed!
+            if (itemSellIn <= 5) {
+                item.increaseQuality();
+            }
+
+            return;
+        }
+
+
+        // Generic handling for all other items.
+        // Quality drops twice as fast for old items
+        item.decreaseQuality();
+        if (itemSellIn <= 0) {
+            item.decreaseQuality();
         }
     }
 
