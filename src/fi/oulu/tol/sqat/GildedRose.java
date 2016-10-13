@@ -21,16 +21,16 @@ public class GildedRose {
 	}
 
     public void updateEndOfDay() {
-        for (Item item : items)
-        {
+        for (Item item : items) {
+            if (item.getName().equals("Sulfuras, Hand of Ragnaros")) {
+                continue;
+            }
+
             if ((!"Aged Brie".equals(item.getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
             {
                 if (item.getQuality() > 0)
                 {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
-                    {
-                        item.decreaseQuality();
-                    }
+                    item.decreaseQuality();
                 }
             }
             else
@@ -60,10 +60,7 @@ public class GildedRose {
                 }
             }
 
-            if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
-            {
-                item.decreaseSellIn();
-            }
+            item.decreaseSellIn();
 
             if (item.getSellIn() < 0)
             {
@@ -73,10 +70,7 @@ public class GildedRose {
                     {
                         if (item.getQuality() > 0)
                         {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
-                            {
-                                item.decreaseQuality();
-                            }
+                            item.decreaseQuality();
                         }
                     }
                     else
