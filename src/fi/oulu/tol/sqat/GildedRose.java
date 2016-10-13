@@ -22,11 +22,13 @@ public class GildedRose {
 
     public void updateEndOfDay() {
         for (Item item : items) {
-            if (item.getName().equals("Sulfuras, Hand of Ragnaros")) {
+            String itemName = item.getName();
+
+            if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
                 continue;
             }
 
-            if ((!"Aged Brie".equals(item.getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
+            if ((!"Aged Brie".equals(itemName)) && !"Backstage passes to a TAFKAL80ETC concert".equals(itemName))
             {
                 if (item.getQuality() > 0)
                 {
@@ -39,7 +41,7 @@ public class GildedRose {
                 {
                     item.increaseQuality();
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
+                    if ("Backstage passes to a TAFKAL80ETC concert".equals(itemName))
                     {
                         if (item.getSellIn() < 11)
                         {
@@ -63,7 +65,7 @@ public class GildedRose {
             item.decreaseSellIn();
 
             if (item.getSellIn() < 0) {
-                if (item.getName().equals("Aged Brie"))
+                if (itemName.equals("Aged Brie"))
                 {
                     if (item.getQuality() < 50) {
                         item.increaseQuality();
@@ -71,7 +73,7 @@ public class GildedRose {
                     continue;
                 }
 
-                if (item.getName().equals("Backstage passes to a TAFKAL80ETC concert")
+                if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")
                     && item.getQuality() > 0)
                 {
                     item.setQuality(0);
