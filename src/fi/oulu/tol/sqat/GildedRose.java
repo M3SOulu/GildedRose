@@ -22,9 +22,10 @@ public class GildedRose {
 
     public void updateEndOfDay() {
         for (Item item : items) {
-            String itemName = item.getName();
-
+            // Sell-in value is decreased beforehand to simplify the code
             item.decreaseSellIn();
+
+            String itemName = item.getName();
             int itemSellIn = item.getSellIn();
 
             // Legendary item, the quality never changes
@@ -35,6 +36,7 @@ public class GildedRose {
             if (itemName.equals("Aged Brie")) {
                 item.increaseQuality();
 
+                // Old brie's quality increases twice as fast
                 if (itemSellIn < 0) {
                     item.increaseQuality();
                 }
@@ -43,6 +45,7 @@ public class GildedRose {
             }
 
             if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                // Old concert
                 if (itemSellIn <= 0) {
                     item.setQuality(0);
                     continue;
@@ -50,10 +53,12 @@ public class GildedRose {
 
                 item.increaseQuality();
 
+                // 10 days or less -> double speed
                 if (itemSellIn <= 9) {
                     item.increaseQuality();
                 }
 
+                // 5 days or less -> triple speed!
                 if (itemSellIn <= 4) {
                     item.increaseQuality();
                 }
