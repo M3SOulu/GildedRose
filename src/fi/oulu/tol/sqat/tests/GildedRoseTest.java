@@ -17,19 +17,8 @@ public class GildedRoseTest {
 //   Item("Aged Brie", 2, 0));
 //   Item("Elixir of the Mongoose", 5, 7));
 //   Item("Sulfuras, Hand of Ragnaros", 0, 80));
-//   Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+//   Item("Backstage passes to a TAFKAL80ETC concert to a TAFKAL80ETC concert", 15, 20));
 //   Item("Conjured Mana Cake", 3, 6));
-
-	// Once the sell by date has passed, Quality degrades twice as fast
-	// The Quality of an item is never negative
-	// The Quality of an item is never more than 50
-	// "Aged Brie" actually increases in Quality the older it gets
-	// "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
-	// "Backstage passes", like aged brie, increases in Quality as it's SellIn value approaches; 
-	// Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but 
-	// Quality drops to 0 after the concert.
-	
-	// Comments placed above the test method just for the clarity of the practise
 	
 	@Test
 	// Basic brie aging test
@@ -39,12 +28,12 @@ public class GildedRoseTest {
 		store.addItem(new Item("Aged Brie", 2, 10) );
 		
 		// Act
-		store.updateEndOfDay();
+		GildedRose.updateEndOfDay();
 		
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(11, itemBrie.getQuality());
+		Item item = items.get(0);
+		assertEquals(11, item.getQuality());
 	}
     
 	// Test for negative quality
@@ -55,13 +44,13 @@ public class GildedRoseTest {
 		store.addItem(new Item("Never negative", 1, 0) );
 		
 		// Act
-		store.updateEndOfDay();
-		store.updateEndOfDay();
+		GildedRose.updateEndOfDay();
+		GildedRose.updateEndOfDay();
 
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(0, itemBrie.getQuality());
+		Item item = items.get(0);
+		assertEquals(0, item.getQuality());
 	}
 
 	// Quality maximum reached
@@ -72,12 +61,12 @@ public class GildedRoseTest {
 		store.addItem(new Item("Aged Brie", 1, 49) );
 		
 		// Act
-		store.updateEndOfDay();
+		GildedRose.updateEndOfDay();
 
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(50, itemBrie.getQuality());
+		Item item = items.get(0);
+		assertEquals(50, item.getQuality());
 	}
 
 	// Quality increased by two
@@ -88,14 +77,14 @@ public class GildedRoseTest {
 		store.addItem(new Item("Aged Brie", 1, 10) );
 		
 		// Act
-		store.updateEndOfDay();
-		store.updateEndOfDay();
-		store.updateEndOfDay();
+		GildedRose.updateEndOfDay();
+		GildedRose.updateEndOfDay();
+		GildedRose.updateEndOfDay();
 
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(15, itemBrie.getQuality());
+		Item item = items.get(0);
+		assertEquals(15, item.getQuality());
 	}
 	
 	// Sulfuras never sellIn test
@@ -103,15 +92,15 @@ public class GildedRoseTest {
 	public void testUpdateEndOfDay_Sulfuras_SellIn_1_1() {
 		// Arrange
 		GildedRose store = new GildedRose();
-		store.addItem(new Item("Sulfuras", 1, 1) );
+		store.addItem(new Item("Sulfuras, Hand of Ragnaros", 1, 1) );
 		
 		// Act; two days
-		store.updateEndOfDay();
+		GildedRose.updateEndOfDay();
 
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(1, itemBrie.getSellIn());
+		Item item = items.get(0);
+		assertEquals(1, item.getSellIn());
 	}
 
 	// Backstage pass +2 quality test
@@ -119,15 +108,15 @@ public class GildedRoseTest {
 	public void testUpdateEndOfDay_BP_Quality_1_3() {
 		// Arrange
 		GildedRose store = new GildedRose();
-		store.addItem(new Item("Backstage passes", 10, 1) );
+		store.addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 10, 1) );
 		
 		// Act; two days
-		store.updateEndOfDay();
+		GildedRose.updateEndOfDay();
 
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(3, itemBrie.getSellIn());
+		Item item = items.get(0);
+		assertEquals(9, item.getSellIn());
 	}
 
 	// Backstage pass +3 quality test
@@ -135,31 +124,31 @@ public class GildedRoseTest {
 	public void testUpdateEndOfDay_BP_Quality_1_4() {
 		// Arrange
 		GildedRose store = new GildedRose();
-		store.addItem(new Item("Backstage passes", 5, 1) );
+		store.addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 5, 1) );
 		
 		// Act; two days
-		store.updateEndOfDay();
+		GildedRose.updateEndOfDay();
 
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(4, itemBrie.getSellIn());
+		Item item = items.get(0);
+		assertEquals(4, item.getSellIn());
 	}
 
 	// Backstage pass 0 quality test
 	@Test
-	public void testUpdateEndOfDay_Sulfuras_Quality_1_0() {
+	public void testUpdateEndOfDay_Sulfuras_Quality_0_10() {
 		// Arrange
 		GildedRose store = new GildedRose();
-		store.addItem(new Item("Backstage passes", 0, 10) );
+		store.addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 10) );
 		
 		// Act; two days
-		store.updateEndOfDay();
+		GildedRose.updateEndOfDay();
 
 		// Assert
 		List<Item> items = store.getItems();
-		Item itemBrie = items.get(0);
-		assertEquals(0, itemBrie.getSellIn());
+		Item item = items.get(0);
+		assertEquals(10, item.getQuality());
 	}
 
 	@Test
