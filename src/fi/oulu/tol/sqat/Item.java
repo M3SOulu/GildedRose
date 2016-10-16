@@ -61,13 +61,11 @@ public class Item {
 	}
 
 	public void increaseQuality() {
-		if (!hasReachedMaximumQuality())
-			++this.quality;
+		if (!hasReachedMaximumQuality()) ++this.quality;
 	}
 
 	public void decreaseQuality() {
-		if (!hasZeroQuality())
-			--this.quality;
+		if (!hasZeroQuality()) --this.quality;
 	}
 
 	public boolean isExpired() {
@@ -79,17 +77,10 @@ public class Item {
 		// I try to keep the implementation and file management
 		// as simple as possible for now.
 		switch (getName()) {
-			case AGED_BRIE:
-				handleAgedBrie();
-				break;
-			case BACKSTAGE_PASSES:
-				handleBackstagePasses();
-				break;
-			case SULFURAS:
-				handleSulfuras();
-				break;
-			default:
-				handleDefault();
+		case AGED_BRIE:        handleAgedBrie();        break;
+		case BACKSTAGE_PASSES: handleBackstagePasses(); break;
+		case SULFURAS:         handleSulfuras();        break;
+		default:               handleDefault();
 		}
 	}
 
@@ -103,17 +94,16 @@ public class Item {
 	}
 
 	private void handleBackstagePasses() {
+		decreaseSellIn();
 		increaseQuality();
 
-		if (getSellIn() < 11) {
+		if (getSellIn() < 10) {
 			increaseQuality();
 		}
 
-		if (getSellIn() < 6) {
+		if (getSellIn() < 5) {
 			increaseQuality();
 		}
-
-		decreaseSellIn();
 
 		if (isExpired()) {
 			resetQuality();

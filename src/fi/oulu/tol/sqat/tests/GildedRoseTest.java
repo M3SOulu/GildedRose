@@ -2,7 +2,6 @@ package fi.oulu.tol.sqat.tests;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
