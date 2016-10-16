@@ -19,6 +19,7 @@ public class GildedRose {
 	}
 
 	public void updateEndOfDay() {
+		// Let items update themselves
 		for (Item item : items) {
 			item.update();
 		}

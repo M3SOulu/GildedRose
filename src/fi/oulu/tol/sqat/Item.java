@@ -85,41 +85,38 @@ public class Item {
 	}
 
 	private void handleAgedBrie() {
-		decreaseSellIn();
-		increaseQuality();
-
-		if (isExpired()) {
-			increaseQuality();
-		}
+		decreaseSellIn();  // Aged Brie increases in quality
+		increaseQuality(); // the older it gets
+		
+		// x2 Quality increase when expired (not sure if this is
+		// correct behavior (?)).
+		if (isExpired()) increaseQuality();
 	}
 
 	private void handleBackstagePasses() {
-		decreaseSellIn();
-		increaseQuality();
-
-		if (getSellIn() < 10) {
-			increaseQuality();
-		}
-
-		if (getSellIn() < 5) {
-			increaseQuality();
-		}
-
-		if (isExpired()) {
-			resetQuality();
-		}
+		decreaseSellIn();  // Backstage passes increase in quality
+		increaseQuality(); // as the SellIn value approaches 0 by default
+		
+		// x2 Quality increase
+		if (getSellIn() < 10) increaseQuality();
+		
+		// x3 Quality increase
+		if (getSellIn() < 5) increaseQuality();
+		
+		// No more parties, reset quality to zero
+		if (isExpired()) resetQuality();
 	}
 
 	private void handleSulfuras() {
-		increaseQuality();
+		// Legendary item, quality is a constant (80) and it
+		// is never sold
 	}
 
 	private void handleDefault() {
-		decreaseSellIn();
-		decreaseQuality();
-
-		if (isExpired()) {
-			decreaseQuality();
-		}
+		decreaseSellIn();  // Normal items decrease in quality
+		decreaseQuality(); // the older they get
+		
+		// x2 Quality loss when expired
+		if (isExpired()) decreaseQuality();
 	}
 }
