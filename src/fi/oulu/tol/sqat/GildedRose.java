@@ -35,15 +35,11 @@ public class GildedRose {
 		return item.getSellIn() < 0;
 	}
 
-	private static boolean isQualityLessThanFifty(Item item) {
+	private static boolean isQualityLessThanFiftyOne(Item item) {
 		return item.getQuality() < 50;
 	}
-
-	private static boolean isQualityAboveZero(Item item) {
-		return item.getQuality() > 0;
-	}
-
-	private static void updateQuality(Item item) {
+	
+	private static void qualityToZero(Item item) {
 		item.setQuality(item.getQuality() - item.getQuality());
 	}
 
@@ -59,101 +55,53 @@ public class GildedRose {
 		item.setQuality(item.getQuality() + 1);
 	}
 
-	private static void qualityWhenSellInLessThanSixDaysAndQualityUnderFifty(Item item) {
-		if (isSellInLessThanSixDays(item))
-		     if (isQualityLessThanFifty(item))
-		         increaseQuality(item);
-	}
-
-	private static void qualityWhenSellInLessThanElevenDaysAndQualityUnderFifty(Item item) {
-		if (isSellInLessThanElevenDays(item))
-		     if (isQualityLessThanFifty(item))
-		         increaseQuality(item);
-	}
-	
-    public static void updateEndOfDay()
-    {
+    public static void updateEndOfDay(){
     	for(Item item:items)
         {
-    		 if (BACKSTAGE.equals(item.getName()))
-             {
-    			 qualityWhenSellInLessThanElevenDaysAndQualityUnderFifty(item);
-                 qualityWhenSellInLessThanSixDaysAndQualityUnderFifty(item);
-             }
-    		 else if (BRIE.equals(item.getName())){
-    			 if (isQualityLessThanFifty(item))
-                 {
-                     increaseQuality(item);
-                 }
-    			 if (isSellInUnderZero(item)){
-    				 decreaseSellIn(item);
-    			 }
-    		 }
-    		 else if (SULFURAS.equals(item.getName())){
-    			 increaseQuality(item);
-    			 decreaseQuality(item);
-    		 }
-    		 else {
-    			 if (isQualityAboveZero(item))
-                 {
-                     decreaseQuality(item);
-                 }
-    			 if (isSellInUnderZero(item)){
-    				 decreaseSellIn(item);
-    			 }
-    		 }
-    		/* 
-			if ((!BRIE.equals(item.getName())) && !BACKSTAGE.equals(item.getName())) 
-            {
-                if (isQualityAboveZero(item))
-                {
-                    if (!SULFURAS.equals(item.getName()))
-                    {
-                        decreaseQuality(item);
-                    }
-                }
-            }
-            else
-            {
-                if (isQualityLessThanFifty(item))
-                {
-                    increaseQuality(item);
-                }
-            }
-
-            if (!SULFURAS.equals(item.getName()))
-            {
-                decreaseSellIn(item);
-            }
-
-            if (isSellInUnderZero(item))
-            {
-                if (!BRIE.equals(item.getName()))
-                {
-                    if (!BACKSTAGE.equals(item.getName()))
-                    {
-                        if (isQualityAboveZero(item))
-                        {
-                            if (!SULFURAS.equals(item.getName()))
-                            {
-                                decreaseQuality(item);
-                            }
-                        }
-                    }
-                    else
-                    {
-                    	updateQuality(item);
-                    }
-                }
-                else
-                {
-                    if (isQualityLessThanFifty(item))
-                    {
-                        increaseQuality(item);
-                    }
-                }
-            }*/
+    		if (BACKSTAGE.equals(item.getName()))
+    			caseBackstagePass(item);
+    		else if (BRIE.equals(item.getName()))
+    			caseAgedBrie(item);
+    		else if (SULFURAS.equals(item.getName()))
+    			caseSulfuras(item);
+    		else {
+    			caseNormalItem(item);
+    		}
         }
     }
+
+	private static void caseBackstagePass(Item item) {
+		if (isSellInLessThanSixDays(item) && isQualityLessThanFiftyOne(item))
+			     increaseQuality(item);
+	
+		if (isSellInLessThanElevenDays(item) && isQualityLessThanFiftyOne(item))
+			     increaseQuality(item);
+		
+		if (isQualityLessThanFiftyOne(item))
+		     increaseQuality(item);
+		decreaseSellIn(item);
+		
+		if (isSellInUnderZero(item))
+			qualityToZero(item);
+		}
+
+	private static void caseNormalItem(Item item) {
+		decreaseSellIn(item);
+		if (isQualityLessThanFiftyOne(item))
+            decreaseQuality(item);
+		}
+
+	private static void caseAgedBrie(Item item) {
+		decreaseSellIn(item);
+		
+		if (isQualityLessThanFiftyOne(item))
+			increaseQuality(item);
+		
+		if (isSellInUnderZero(item) && isQualityLessThanFiftyOne(item))
+				increaseQuality(item);
+		}
+	
+	private static void caseSulfuras(Item item) {
+	}
 }
 

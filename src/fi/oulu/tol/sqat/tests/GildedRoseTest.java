@@ -131,7 +131,7 @@ import fi.oulu.tol.sqat.Item;
 		int sellIn = store.getItems().get(0).getSellIn();
 		String failMessage = "Sulfuras, being a legendary item, never has to be sold";
 		assertEquals(failMessage, 0, sellIn);
-	} 
+	}
 	// Test Backstage pass
 	@Test
 	public void testUpdateEndOfDay_Backstage_Quality_15_20() {
