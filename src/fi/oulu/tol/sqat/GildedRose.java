@@ -9,7 +9,7 @@ public class GildedRose {
 	public List<Item> getItems() {
 		return items;
 	}
-	
+
 	public void addItem(Item item) {
 		items.add(item);
 	}
@@ -17,8 +17,8 @@ public class GildedRose {
 	public GildedRose() {
 		items = new ArrayList<Item>();
 	}
-	
-    public void updateEndOfDay() {
+
+	public void updateEndOfDay() {
         for (Item item : items) {
         	item.update();
         }
