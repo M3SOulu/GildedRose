@@ -19,8 +19,8 @@ public class GildedRose {
 	}
 
 	public void updateEndOfDay() {
-        for (Item item : items) {
-        	item.update();
-        }
-    }
+		for (Item item : items) {
+			item.update();
+		}
+	}
 }

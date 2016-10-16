@@ -1,22 +1,22 @@
 package fi.oulu.tol.sqat;
 
 public class Item {
-    String name;
-    
-    int sellIn;
-    int quality;
+	String name;
 
-    public static final String AGED_BRIE = "Aged Brie";
-    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-    public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+	int sellIn;
+	int quality;
 
-    public Item(String name, int sellIn, int quality) {
+	public static final String AGED_BRIE = "Aged Brie";
+	public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+	public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+
+	public Item(String name, int sellIn, int quality) {
 		this.setName(name);
 		this.setSellIn(sellIn);
 		this.setQuality(quality);
 	}
 
-    public String getName() {
+	public String getName() {
 		return name;
 	}
 
@@ -51,7 +51,7 @@ public class Item {
 	public void resetQuality() {
 		this.quality = 0;
 	}
-	
+
 	public boolean hasZeroQuality() {
 		return this.quality == 0;
 	}
@@ -79,45 +79,45 @@ public class Item {
 		// I try to keep the implementation and file management
 		// as simple as possible for now.
 		switch (getName()) {
-		case AGED_BRIE:
-			handleAgedBrie();
-			break;
-		case BACKSTAGE_PASSES:
-			handleBackstagePasses();
-			break;
-		case SULFURAS:
-			handleSulfuras();
-			break;
-		default:
-			handleDefault();
+			case AGED_BRIE:
+				handleAgedBrie();
+				break;
+			case BACKSTAGE_PASSES:
+				handleBackstagePasses();
+				break;
+			case SULFURAS:
+				handleSulfuras();
+				break;
+			default:
+				handleDefault();
 		}
 	}
 
 	private void handleAgedBrie() {
 		decreaseSellIn();
 		increaseQuality();
-		
+
 		if (isExpired()) {
-        	increaseQuality();
+			increaseQuality();
 		}
 	}
 
 	private void handleBackstagePasses() {
 		increaseQuality();
-		
-        if (getSellIn() < 11) {
-        	increaseQuality();
-        }
 
-        if (getSellIn() < 6) {
-        	increaseQuality();
-        }
-        
-        decreaseSellIn();
-        
-        if (isExpired()) {
-        	resetQuality();
-        }
+		if (getSellIn() < 11) {
+			increaseQuality();
+		}
+
+		if (getSellIn() < 6) {
+			increaseQuality();
+		}
+
+		decreaseSellIn();
+
+		if (isExpired()) {
+			resetQuality();
+		}
 	}
 
 	private void handleSulfuras() {
@@ -127,10 +127,9 @@ public class Item {
 	private void handleDefault() {
 		decreaseSellIn();
 		decreaseQuality();
-        
-        if (isExpired()) {
-        	decreaseQuality();
-        }
+
+		if (isExpired()) {
+			decreaseQuality();
+		}
 	}
 }
-
