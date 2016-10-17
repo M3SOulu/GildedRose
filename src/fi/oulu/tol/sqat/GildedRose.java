@@ -54,6 +54,21 @@ public class GildedRose {
 	private static void increaseQuality(Item item) {
 		item.setQuality(item.getQuality() + 1);
 	}
+	
+	private static void increaseQualityWhenItsUnderFiftyOne(Item item) {
+		if (isQualityLessThanFiftyOne(item))
+			increaseQuality(item);
+	}
+	
+	private static void decreaseQualityWhenItsUnderFiftyOne(Item item) {
+		if (isQualityLessThanFiftyOne(item))
+            decreaseQuality(item);
+	}
+	
+	private static void increaseQualityWhenSellInHasPassed(Item item) {
+		if (isSellInUnderZero(item) && isQualityLessThanFiftyOne(item))
+			increaseQuality(item);
+	}
 
     public static void updateEndOfDay(){
     	for(Item item:items)
@@ -71,36 +86,27 @@ public class GildedRose {
     }
 
 	private static void caseBackstagePass(Item item) {
-		if (isSellInLessThanSixDays(item) && isQualityLessThanFiftyOne(item))
-			     increaseQuality(item);
-	
-		if (isSellInLessThanElevenDays(item) && isQualityLessThanFiftyOne(item))
-			     increaseQuality(item);
-		
-		if (isQualityLessThanFiftyOne(item))
-		     increaseQuality(item);
 		decreaseSellIn(item);
-		
+		increaseQualityWhenItsUnderFiftyOne(item);
+		if (isSellInLessThanElevenDays(item) && isQualityLessThanFiftyOne(item))
+		    increaseQuality(item);
+		if (isSellInLessThanSixDays(item) && isQualityLessThanFiftyOne(item))
+			increaseQuality(item);
 		if (isSellInUnderZero(item))
 			qualityToZero(item);
 		}
 
 	private static void caseNormalItem(Item item) {
 		decreaseSellIn(item);
-		if (isQualityLessThanFiftyOne(item))
-            decreaseQuality(item);
+		decreaseQualityWhenItsUnderFiftyOne(item);
 		}
 
 	private static void caseAgedBrie(Item item) {
 		decreaseSellIn(item);
-		
-		if (isQualityLessThanFiftyOne(item))
-			increaseQuality(item);
-		
-		if (isSellInUnderZero(item) && isQualityLessThanFiftyOne(item))
-				increaseQuality(item);
+		increaseQualityWhenItsUnderFiftyOne(item);
+		increaseQualityWhenSellInHasPassed(item);
 		}
-	
+
 	private static void caseSulfuras(Item item) {
 	}
 }
