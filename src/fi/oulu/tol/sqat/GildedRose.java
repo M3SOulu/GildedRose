@@ -31,11 +31,11 @@ public class GildedRose {
 		return item.getSellIn() < 11;
 	}
 
-	private static boolean isSellInUnderZero(Item item) {
+	private static boolean isExpired(Item item) {
 		return item.getSellIn() < 0;
 	}
 
-	private static boolean isQualityLessThanFiftyOne(Item item) {
+	private static boolean hasReachMaximumQuality(Item item) {
 		return item.getQuality() < 50;
 	}
 	
@@ -55,19 +55,34 @@ public class GildedRose {
 		item.setQuality(item.getQuality() + 1);
 	}
 	
-	private static void increaseQualityWhenItsUnderFiftyOne(Item item) {
-		if (isQualityLessThanFiftyOne(item))
+	private static void increaseQualityWhenQualityIsUnderMax(Item item) {
+		if (hasReachMaximumQuality(item))
 			increaseQuality(item);
 	}
 	
-	private static void decreaseQualityWhenItsUnderFiftyOne(Item item) {
-		if (isQualityLessThanFiftyOne(item))
+	private static void decreaseQualityWhenQualityIsUnderMax(Item item) {
+		if (hasReachMaximumQuality(item))
             decreaseQuality(item);
 	}
 	
 	private static void increaseQualityWhenSellInHasPassed(Item item) {
-		if (isSellInUnderZero(item) && isQualityLessThanFiftyOne(item))
+		if (isExpired(item) && hasReachMaximumQuality(item))
 			increaseQuality(item);
+	}
+	
+	private static void increaseQualityWhenSellInIsLessThanSix(Item item) {
+		if (isSellInLessThanSixDays(item) && hasReachMaximumQuality(item))
+			increaseQuality(item);
+	}
+
+	private static void increaseQualityWhenSellInIsULessThanEleven(Item item) {
+		if (isSellInLessThanElevenDays(item) && hasReachMaximumQuality(item))
+		    increaseQuality(item);
+	}
+	
+	private static void qualityToZeroWhenIsExpired(Item item) {
+		if (isExpired(item))
+			qualityToZero(item);
 	}
 
     public static void updateEndOfDay(){
@@ -87,27 +102,25 @@ public class GildedRose {
 
 	private static void caseBackstagePass(Item item) {
 		decreaseSellIn(item);
-		increaseQualityWhenItsUnderFiftyOne(item);
-		if (isSellInLessThanElevenDays(item) && isQualityLessThanFiftyOne(item))
-		    increaseQuality(item);
-		if (isSellInLessThanSixDays(item) && isQualityLessThanFiftyOne(item))
-			increaseQuality(item);
-		if (isSellInUnderZero(item))
-			qualityToZero(item);
+		increaseQualityWhenQualityIsUnderMax(item);
+		increaseQualityWhenSellInIsULessThanEleven(item);
+		increaseQualityWhenSellInIsLessThanSix(item);
+		qualityToZeroWhenIsExpired(item);
 		}
 
 	private static void caseNormalItem(Item item) {
 		decreaseSellIn(item);
-		decreaseQualityWhenItsUnderFiftyOne(item);
+		decreaseQualityWhenQualityIsUnderMax(item);
 		}
 
 	private static void caseAgedBrie(Item item) {
 		decreaseSellIn(item);
-		increaseQualityWhenItsUnderFiftyOne(item);
+		increaseQualityWhenQualityIsUnderMax(item);
 		increaseQualityWhenSellInHasPassed(item);
 		}
 
 	private static void caseSulfuras(Item item) {
+		//Do nothing
 	}
 }
 
