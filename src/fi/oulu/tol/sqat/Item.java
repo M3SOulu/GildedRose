@@ -2,9 +2,9 @@ package fi.oulu.tol.sqat;
 
 
 public class Item {
-    public String name;
-	public int sellIn; 
-    public int quality; 
+    String name;
+    int sellIn; 
+    int quality; 
     
     public Item(String name, int sellIn, int quality) {
 		this.setName(name);
@@ -30,6 +30,19 @@ public class Item {
 	}
 	public void setQuality(int quality) {
 		this.quality = quality;
+	}
+	public  void increaseQuality(){
+		//quality++;
+		setQuality(getQuality() + 1);
+	}
+	public void decreaseQuality() {
+		--quality;
+	}
+	public void increaseSellIn(){
+		sellIn++;
+	}
+	public void decreaseSellIn(){
+		--sellIn;
 	}
 }
 
