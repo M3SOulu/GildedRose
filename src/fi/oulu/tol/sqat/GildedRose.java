@@ -23,12 +23,21 @@ public class GildedRose {
         items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new Item("Conjured Mana Cake", 3, 6));
 
-        updateQuality();
+        updateEndOfDay();
 }
+    public static void addItem(Item item) {
+        if (items == null) {
+            items = new ArrayList<Item>();
+        }
+        items.add(item);
+    }
 
+    public static List<Item> getItems() {
+        return items;
+    }
 
 	
-    public static void updateQuality()
+    public static void updateEndOfDay()
     {
         for (int i = 0; i < items.size(); i++)
         {
