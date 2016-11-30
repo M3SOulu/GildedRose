@@ -8,6 +8,10 @@ public class GildedRose {
 
 	private static List<Item> items = null;
 
+	public GildedRose(ArrayList<Item> items ){
+		this.items = new ArrayList<Item> (items);
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -27,6 +31,9 @@ public class GildedRose {
 }
 
 
+	public List<Item> getItems(){
+		return items;
+	}
 	
     public static void updateQuality()
     {
