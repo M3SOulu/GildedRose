@@ -8,6 +8,10 @@ public class GildedRose {
 
 	private static List<Item> items = null;
 
+	public GildedRose(ArrayList<Item> items ){
+		this.items = new ArrayList<Item> (items);
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -27,6 +31,9 @@ public class GildedRose {
 }
 
 
+	public List<Item> getItems(){
+		return items;
+	}
 	
     public static void updateQuality()
     {
@@ -37,6 +44,10 @@ public class GildedRose {
                 if (items.get(i).getQuality() > 0)
                 {
                     if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+                    {
+                        items.get(i).setQuality(items.get(i).getQuality() - 1);
+                    }
+                    if ((items.get(i).getName()).contains("Conjured"))
                     {
                         items.get(i).setQuality(items.get(i).getQuality() - 1);
                     }
@@ -83,6 +94,10 @@ public class GildedRose {
                         if (items.get(i).getQuality() > 0)
                         {
                             if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+                            {
+                                items.get(i).setQuality(items.get(i).getQuality() - 1);
+                            }
+                            if ((items.get(i).getName()).contains("Conjured"))
                             {
                                 items.get(i).setQuality(items.get(i).getQuality() - 1);
                             }
