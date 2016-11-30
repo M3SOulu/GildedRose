@@ -25,6 +25,23 @@ public class GildedRose {
 
         updateQuality();
 }
+	
+	public static void addItem(String item, int sellIn, int quality){
+		if (items == null){
+			items = new ArrayList<Item>();
+		}
+		items.add(new Item(item, sellIn, quality));
+	}
+	
+	public static Item getItem(String item){
+		Item result = null;
+		for (Item i : items){
+			if (i.getName().equals(item)){
+				result = i;
+			}
+		}
+		return result;
+	}
 
 
 	
@@ -37,6 +54,10 @@ public class GildedRose {
                 if (items.get(i).getQuality() > 0)
                 {
                     if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+                    {
+                        items.get(i).setQuality(items.get(i).getQuality() - 1);
+                    }
+                    if (items.get(i).getName().contains("Conjured"))
                     {
                         items.get(i).setQuality(items.get(i).getQuality() - 1);
                     }
@@ -83,6 +104,10 @@ public class GildedRose {
                         if (items.get(i).getQuality() > 0)
                         {
                             if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+                            {
+                                items.get(i).setQuality(items.get(i).getQuality() - 1);
+                            }
+                            if (items.get(i).getName().contains("Conjured"))
                             {
                                 items.get(i).setQuality(items.get(i).getQuality() - 1);
                             }
