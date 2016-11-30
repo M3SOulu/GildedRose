@@ -31,5 +31,17 @@ public class Item {
 	public void setQuality(int quality) {
 		this.quality = quality;
 	}
+	public void decreaseQuality () {
+		setQuality(getQuality() - 1);
+		//quality = quality - 1;
+	}
+	public void increaseQuality () {
+		setQuality(getQuality() + 1);
+		//quality = quality + 1;
+	}
+	public void decreaseSellIn () {
+		setSellIn(getSellIn() - 1);
+		//sellIn = sellIn - 1;
+	}
 }
 
