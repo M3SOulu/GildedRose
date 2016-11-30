@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class GildedRose {
-	public static List<Item> items = null;
+	public List<Item> items = null;
 	
 	private static final String LEGENDARY_ITEM = "Sulfuras, Hand of Ragnaros";
 	private static final String BACKSTAGE_ITEM = "Backstage passes to a TAFKAL80ETC concert";
@@ -19,24 +19,36 @@ public class GildedRose {
 	public static void main(String[] args) {
 
 		System.out.println("OMGHAI!");
+		
+		GildedRose gr = new GildedRose();	
+		gr.add(new Item("+5 Dexterity Vest", 10, 20));
+		gr.add(new Item("Aged Brie", 2, 0));
+		gr.add(new Item("Elixir of the Mongoose", 5, 7));
+		gr.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
+		gr.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+		gr.add(new Item("Conjured Mana Cake", 3, 6));
 
-		items = new ArrayList<Item>();
-		items.add(new Item("+5 Dexterity Vest", 10, 20));
-		items.add(new Item("Aged Brie", 2, 0));
-		items.add(new Item("Elixir of the Mongoose", 5, 7));
-		items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
-		items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
-		items.add(new Item("Conjured Mana Cake", 3, 6));
-
-		updateQuality();
+		gr.updateQuality();
 	}
 
+	public GildedRose(){
+		items = new ArrayList<Item>();
+	}
+	
+	public void add( Item item ){
+		items.add( item );
+	}
+	
+	public Item get( int index ){
+		return items.get( index );
+	}
+	
 	/**
 	 * increment of 1 item quality n times
 	 * @param item
 	 * @param n
 	 */
-	private static void incrementQuality( Item item, int n )
+	private void incrementQuality( Item item, int n )
 	{
 		for( int i = 0; i < n; i++ ){
 			if( item.getQuality() < QUALITY_MAX )
@@ -49,7 +61,7 @@ public class GildedRose {
 	 * @param item
 	 * @param n
 	 */
-	private static void decrementQuality( Item item, int n )
+	private void decrementQuality( Item item, int n )
 	{
 		for( int i = 0; i < n; i++ ){
 			if( item.getQuality() > 0 )
@@ -61,7 +73,7 @@ public class GildedRose {
 	 * decrement of 1 sellIn
 	 * @param item
 	 */
-	private static void decrementSellIn( Item item ){
+	private void decrementSellIn( Item item ){
 		if (! item.getName().equals( LEGENDARY_ITEM ) )
 			item.setSellIn( item.getSellIn() - 1 );
 	}
@@ -71,7 +83,7 @@ public class GildedRose {
 	 * @param item
 	 * @return true if item is a "special" item
 	 */
-	private static boolean isSpecialItem( Item item ){
+	private boolean isSpecialItem( Item item ){
 		if( item.getName().equals( BRIE_ITEM ) ){
 			return true;
 		}
@@ -89,7 +101,7 @@ public class GildedRose {
 	 * increment quality of Backstage passes item
 	 * @param backstageItem
 	 */
-	private static void incrementBackstageItemQuality( Item backstageItem ){
+	private void incrementBackstageItemQuality( Item backstageItem ){
 		if( backstageItem.getSellIn() >= 11 ){
 			incrementQuality(backstageItem, 1);
 		}
@@ -110,7 +122,7 @@ public class GildedRose {
 	 * increment quality of Aged Brie item
 	 * @param item
 	 */
-	private static void incrementAgedBrieItemQuality( Item item ){
+	private void incrementAgedBrieItemQuality( Item item ){
 		if( item.getSellIn() < 0 ){
 			incrementQuality( item, 2 );
 		}
@@ -123,7 +135,7 @@ public class GildedRose {
 	 * decrement quality of not special item
 	 * @param item
 	 */
-	private static void decrementBasicItemQuality( Item item ){
+	private void decrementBasicItemQuality( Item item ){
 		if( item.getSellIn() > 0 ){
 			decrementQuality( item, 1 );
 		}
@@ -136,7 +148,7 @@ public class GildedRose {
 	 * update quality of all items
 	 * @param item
 	 */
-	private static void updateQualityItem( Item item ){
+	private void updateQualityItem( Item item ){
 		if ( ! isSpecialItem( item ) ) {
 			decrementBasicItemQuality( item );
 		}
@@ -154,7 +166,7 @@ public class GildedRose {
 	/**
 	 * update quality items at the end of each day
 	 */
-	public static void updateQuality()
+	public void updateQuality()
 	{
 		for (Item item : items)
 		{		
