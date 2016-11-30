@@ -144,4 +144,24 @@ public class GildedRoseTest {
 		assertEquals(3, sellin);
 	}
 
+	@Test
+	public void testQualityConjuredItem() {
+		GildedRose.addItem("Conjured Fish", 19, 30);
+		GildedRose.updateQuality();
+		int quality  = GildedRose.getItem("Conjured Fish").getQuality();
+		assertEquals(28, quality);
+		int sellin  = GildedRose.getItem("Conjured Fish").getSellIn();
+		assertEquals(18, sellin);
+	}
+
+	@Test
+	public void testQualityConjuredItemAfterSellin() {
+		GildedRose.addItem("Conjured Fish", -2, 30);
+		GildedRose.updateQuality();
+		int quality  = GildedRose.getItem("Conjured Fish").getQuality();
+		assertEquals(26, quality);
+		int sellin  = GildedRose.getItem("Conjured Fish").getSellIn();
+		assertEquals(-3, sellin);
+	}
+
 }
