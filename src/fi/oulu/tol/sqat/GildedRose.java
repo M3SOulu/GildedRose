@@ -25,6 +25,23 @@ public class GildedRose {
 
         updateQuality();
 }
+	
+	public static void addItem(String item, int sellIn, int quality){
+		if (items == null){
+			items = new ArrayList<Item>();
+		}
+		items.add(new Item(item, sellIn, quality));
+	}
+	
+	public static Item getItem(String item){
+		Item result = null;
+		for (Item i : items){
+			if (i.getName().equals(item)){
+				result = i;
+			}
+		}
+		return result;
+	}
 
 
 	
