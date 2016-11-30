@@ -47,6 +47,10 @@ public class GildedRose {
                     {
                         items.get(i).setQuality(items.get(i).getQuality() - 1);
                     }
+                    if ((items.get(i).getName()).contains("Conjured"))
+                    {
+                        items.get(i).setQuality(items.get(i).getQuality() - 1);
+                    }
                 }
             }
             else
@@ -90,6 +94,10 @@ public class GildedRose {
                         if (items.get(i).getQuality() > 0)
                         {
                             if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+                            {
+                                items.get(i).setQuality(items.get(i).getQuality() - 1);
+                            }
+                            if ((items.get(i).getName()).contains("Conjured"))
                             {
                                 items.get(i).setQuality(items.get(i).getQuality() - 1);
                             }

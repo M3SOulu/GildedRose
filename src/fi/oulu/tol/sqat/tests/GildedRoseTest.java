@@ -16,7 +16,7 @@ public class GildedRoseTest {
 	@Test
 	public void NormalItem_Quality_decrese_by_1__with_1_apdate() {
 		ArrayList<Item> items = new ArrayList<Item>();
-		items.add(new Item("+5 Dexterity Vest", 10, 20));
+		items.add(new Item("+5 Dexterity Vest", 10, 20)); 
 		GildedRose negozio = new GildedRose(items);
 		negozio.updateQuality();
 		items = new ArrayList(negozio.getItems());
