@@ -6,7 +6,7 @@ import java.util.List;
 
 public class GildedRose {
 
-	private static List<Item> items = null;
+	public static List<Item> items = null;
 
 	/**
 	 * @param args
@@ -62,7 +62,7 @@ public class GildedRose {
                         {
                             if (items.get(i).getQuality() < 50)
                             {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
+                                items.get(i).setQuality(items.get(i).getQuality() + 1); //TOdo
                             }
                         }
                     }
