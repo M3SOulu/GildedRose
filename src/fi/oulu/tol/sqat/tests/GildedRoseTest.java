@@ -162,7 +162,7 @@ public class GildedRoseTest {
 		assertEquals(50, GildedRose.items.get(0).getQuality());
 	}
 	
-	@Test
+	@Test 
 	public void testBackstagePassesIncreaseQualityBy1With5SellinDaysOrLessAnd49Quality() {
 		//Arrange
 		GildedRose.items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49));
