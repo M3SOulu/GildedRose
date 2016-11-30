@@ -87,6 +87,6 @@ public class GildedRoseTest {
 	public void testSixthItem() {
 		GildedRose.updateQuality();
 		Assert.assertEquals(2, gild.getItem(5).getSellIn());
-		Assert.assertEquals(5, gild.getItem(5).getQuality());
+		Assert.assertEquals(4, gild.getItem(5).getQuality());
 	}
 }
