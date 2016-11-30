@@ -6,20 +6,22 @@ import java.util.List;
 
 public class GildedRose {
 	public List<Item> items = null;
-	
+	private static List<String> specialItems;
+
 	private static final String LEGENDARY_ITEM = "Sulfuras, Hand of Ragnaros";
 	private static final String BACKSTAGE_ITEM = "Backstage passes to a TAFKAL80ETC concert";
 	private static final String BRIE_ITEM = "Aged Brie";
-	
+	private static final String CONJURED_ITEM = "Conjured Mana Cake";
+
 	private static final int QUALITY_MAX = 50;
-	
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 
 		System.out.println("OMGHAI!");
-		
+
 		GildedRose gr = new GildedRose();	
 		gr.add(new Item("+5 Dexterity Vest", 10, 20));
 		gr.add(new Item("Aged Brie", 2, 0));
@@ -33,16 +35,22 @@ public class GildedRose {
 
 	public GildedRose(){
 		items = new ArrayList<Item>();
+
+		specialItems = new ArrayList<>();
+		specialItems.add( LEGENDARY_ITEM );
+		specialItems.add( BACKSTAGE_ITEM );
+		specialItems.add( BRIE_ITEM );
+		specialItems.add( CONJURED_ITEM );
 	}
-	
+
 	public void add( Item item ){
 		items.add( item );
 	}
-	
+
 	public Item get( int index ){
 		return items.get( index );
 	}
-	
+
 	/**
 	 * increment of 1 item quality n times
 	 * @param item
@@ -84,17 +92,10 @@ public class GildedRose {
 	 * @return true if item is a "special" item
 	 */
 	private boolean isSpecialItem( Item item ){
-		if( item.getName().equals( BRIE_ITEM ) ){
+		if( specialItems.contains( item.getName() ) )
 			return true;
-		}
-		if( item.getName().equals( BACKSTAGE_ITEM ) ){
-			return true;
-		}
-		if( item.getName().equals( LEGENDARY_ITEM ) ){
-			return true;
-		}
-
-		return false;
+		else
+			return false;
 	}
 
 	/**
@@ -117,7 +118,7 @@ public class GildedRose {
 			backstageItem.setQuality( 0 );
 		}
 	}
-	
+
 	/**
 	 * increment quality of Aged Brie item
 	 * @param item
@@ -130,12 +131,12 @@ public class GildedRose {
 			incrementQuality( item, 1 );
 		}
 	}
-	
+
 	/**
 	 * decrement quality of not special item
 	 * @param item
 	 */
-	private void decrementBasicItemQuality( Item item ){
+	private void decrementNormalItemQuality( Item item ){
 		if( item.getSellIn() > 0 ){
 			decrementQuality( item, 1 );
 		}
@@ -145,18 +146,35 @@ public class GildedRose {
 	}
 
 	/**
+	 * decrement quality of Conjured item
+	 * Conjured items degrade in Quality twice as fast as normal items.
+	 * @param item
+	 */
+	private void decrementConjuredItemQuality( Item item ){
+		if( item.getSellIn() > 0 ){
+			decrementQuality( item, 2 );
+		}
+		else{
+			decrementQuality( item, 4 );
+		}
+	}
+
+	/**
 	 * update quality of all items
 	 * @param item
 	 */
 	private void updateQualityItem( Item item ){
 		if ( ! isSpecialItem( item ) ) {
-			decrementBasicItemQuality( item );
+			decrementNormalItemQuality( item );
 		}
 		else if( item.getName().equals( BACKSTAGE_ITEM ) ){
 			incrementBackstageItemQuality( item );
 		}
 		else if( item.getName().equals( BRIE_ITEM ) ){
 			incrementAgedBrieItemQuality( item );
+		}
+		else if( item.getName().equals( CONJURED_ITEM ) ){
+			decrementConjuredItemQuality( item );
 		}
 		else{
 			incrementQuality(item, 1);
