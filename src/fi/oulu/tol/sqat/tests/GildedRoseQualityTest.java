@@ -10,7 +10,7 @@ import fi.oulu.tol.sqat.GildedRose;
 
 import fi.oulu.tol.sqat.Item;
 
-public class GildedRoseTest {
+public class GildedRoseQualityTest {
 	@Before
 	public void setUp() {
 		GildedRose.items = new ArrayList<>();
