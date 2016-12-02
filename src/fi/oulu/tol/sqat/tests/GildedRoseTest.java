@@ -11,7 +11,7 @@ import java.util.List;
 
 public class GildedRoseTest {
 
-    List<Item> items;
+    private List<Item> items;
 
     @Before
     public void setUp() throws Exception {
@@ -41,12 +41,19 @@ public class GildedRoseTest {
         assertEquals(0, items.get(3).getQuality());
     }*/
 
-    /*@Test
-    public void agedBriedIncreaseQualityOlderItGets() throws Exception {
+    @Test
+    public void agedBriedIncreaseQualityOlderItGets1() throws Exception {
         items.get(1).setSellIn(1);
         GildedRose.updateQuality();
         assertEquals(1, items.get(1).getQuality());
-    }*/
+    }
+
+    @Test
+    public void agedBriedIncreaseQualityOlderItGets2() throws Exception {
+        items.get(1).setSellIn(0);
+        GildedRose.updateQuality();
+        assertEquals(2, items.get(1).getQuality());
+    }
 
     @Test
     public void qualityNeverMoreThanFifty() throws Exception {
@@ -100,7 +107,5 @@ public class GildedRoseTest {
         GildedRose.updateQuality();
         assertEquals(0, items.get(4).getQuality());
     }
-
-
 
 }
