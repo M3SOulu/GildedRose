@@ -268,5 +268,27 @@ public class GildedRoseTest {
 		// Assert
 		assertEquals(0, GildedRose.items.get(0).getQuality());
 	}
+	
+	@Test
+	public void testQualityConjuredItem() {
+		
+		// Arrange
+		GildedRose.items.add(new Item("Conjured", 4, 18));
+		// Act
+		GildedRose.updateQuality();
+		// Assert
+		assertEquals(16, GildedRose.items.get(0).getQuality());
+	}
+	
+	@Test
+	public void testQualityConjuredItemSell0() {
+		
+		// Arrange
+		GildedRose.items.add(new Item("Conjured", 0, 18));
+		// Act
+		GildedRose.updateQuality();
+		// Assert
+		assertEquals(14, GildedRose.items.get(0).getQuality());
+	}
 
 }
