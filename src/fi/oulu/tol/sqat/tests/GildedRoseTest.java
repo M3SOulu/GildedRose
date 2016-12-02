@@ -36,7 +36,7 @@ public class GildedRoseTest {
         assertEquals(4, items.get(6).getQuality());
     }
 
-    @Test (expected = ItemException.class)
+    @Test(expected = ItemException.class)
     public void qualityItemNeverNegative() throws ItemException {
         items.get(1).setQuality(-10);
         GildedRose.updateQuality();
@@ -81,13 +81,6 @@ public class GildedRoseTest {
         assertEquals(22, items.get(4).getQuality());
     }
 
-    /*@Test
-    public void agedBrieQualityIncreasedByTwoWhenSellInUpToTen() throws Exception {
-        items.get(1).setSellIn(10);
-        GildedRose.updateQuality();
-        assertEquals(2, items.get(1).getQuality());
-    }*/
-
     @Test
     public void backstageQualityIncreasedByThreeWhenSellInUpToFive() throws Exception, ItemException {
         items.get(4).setSellIn(5);
@@ -95,18 +88,26 @@ public class GildedRoseTest {
         assertEquals(23, items.get(4).getQuality());
     }
 
-    /*@Test
-    public void agedBrieQualityIncreasedByThreeWhenSellInUpToFive() throws Exception {
-        items.get(1).setSellIn(5);
-        GildedRose.updateQuality();
-        assertEquals(2, items.get(1).getQuality());
-    }*/
-
     @Test
     public void backstageQualityDropsToZeroAfterTheConcert() throws Exception, ItemException {
-        items.get(4).setSellIn(-1);
+        items.get(4).setSellIn(-2);
         GildedRose.updateQuality();
         assertEquals(0, items.get(4).getQuality());
     }
 
+    @Test
+    public void conjuredDegradeTwiceFastAsNormalItems() throws Exception, ItemException {
+        items.get(5).setSellIn(-1);
+        GildedRose.updateQuality();
+        assertEquals(2, items.get(5).getQuality());
+    }
+
+    @Test
+    public void testFixQualityLessThanZero() throws Exception, ItemException {
+        items.get(5).setSellIn(-1000);
+        GildedRose.updateQuality();
+        assertEquals(0, items.get(5).getQuality());
+
+
+    }
 }

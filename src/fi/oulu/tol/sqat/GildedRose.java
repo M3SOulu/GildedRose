@@ -69,66 +69,34 @@ public class GildedRose {
                         break;
                     }
                     break;
+                // Conjured items degrade in Quality twice as fast as normal items
+                case "Conjured Mana Cake":
+                    if (item.getSellIn() < 0) {
+                        degradeQuality(item, 4);
+                    }
+                    fixQualityLessThanZero(item);
+                    break;
 
                 default:
                     // Once the SellIn date has passed, Quality degrades twice as fast
-                    if (item.getSellIn() <= 0) {
-                        item.setQuality(item.getQuality() - 2);
+                    if (item.getSellIn() < 0) {
+                        degradeQuality(item, 2);
                     }
+                    fixQualityLessThanZero(item);
+                    break;
             }
         }
     }
 
-    /*public static void updateQualityOLD() {
-        for (Item item : items) {
-            if ((!"Aged Brie".equals(item.getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-                if (item.getQuality() > 0) {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                        item.setQuality(item.getQuality() - 1);
-                    }
-                }
-            } else {
-                if (item.getQuality() < 50) {
-                    item.setQuality(item.getQuality() + 1);
-
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-                        if (item.getSellIn() < 11) {
-                            if (item.getQuality() < 50) {
-                                item.setQuality(item.getQuality() + 1);
-                            }
-                        }
-
-                        if (item.getSellIn() < 6) {
-                            if (item.getQuality() < 50) {
-                                item.setQuality(item.getQuality() + 1);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                item.setSellIn(item.getSellIn() - 1);
-            }
-
-            if (item.getSellIn() < 0) {
-                if (!"Aged Brie".equals(item.getName())) {
-                    if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-                        if (item.getQuality() > 0) {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                                item.setQuality(item.getQuality() - 1);
-                            }
-                        }
-                    } else {
-                        item.setQuality(0);
-                    }
-                } else {
-                    if (item.getQuality() < 50) {
-                        item.setQuality(item.getQuality() + 1);
-                    }
-                }
-            }
+    private static void degradeQuality(Item item, int numberOfTimes) {
+        if (item.getSellIn() < 0) {
+            item.setQuality(item.getQuality() + (numberOfTimes * item.getSellIn()));
         }
-    }*/
+    }
+
+    private static void fixQualityLessThanZero(Item item) {
+        if (item.getQuality() < 0)
+            item.setQuality(0);
+    }
 
 }
