@@ -34,6 +34,12 @@ public class GildedRose {
 					if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
 						items.get(i).setQuality(items.get(i).getQuality() - 1);
 					}
+					// 2 statement if aggiunto per il nuovo item
+					if("Conjured Mana Cake".equals(items.get(i).getName())){
+						if(items.get(i).getQuality() > 0){
+						items.get(i).setQuality(items.get(i).getQuality() - 1);
+						}
+					}
 				}
 			} else {
 				if (items.get(i).getQuality() < 50) {
@@ -65,6 +71,12 @@ public class GildedRose {
 						if (items.get(i).getQuality() > 0) {
 							if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName())) {
 								items.get(i).setQuality(items.get(i).getQuality() - 1);
+							}
+							// 2 statement if aggiunto per il nuovo item
+							if("Conjured Mana Cake".equals(items.get(i).getName())){
+								if(items.get(i).getQuality() > 0){
+								items.get(i).setQuality(items.get(i).getQuality() - 1);
+								}
 							}
 						}
 					} else {

@@ -207,4 +207,47 @@ public class GildedRoseTest {
 		//Assert
 		assertEquals(50,result);
 	}
+	
+	//Test in aggiunta per il nuovo item nell shop
+	@Test
+	public void checkCorrectQualityofCojuredItems(){
+		int resultOfQuality = GildedRose.getList().get(5).getQuality();
+		int resultOfSellIn = GildedRose.getList().get(5).getSellIn();
+		//Assert
+		assertEquals(4,resultOfQuality);
+		assertEquals(2,resultOfSellIn);
+	}
+	
+	@Test
+	public void checkCorrectQualityofCojuredItemsIfSellDatePassed(){
+		//Arrange
+		GildedRose.getList().add(new Item("Conjured Mana Cake", 0, 6));
+		//Act
+		GildedRose.updateQuality();
+		int result = GildedRose.getList().get(6).getQuality();
+		//Assert
+		assertEquals(2,result);
+	}
+	
+	@Test
+	public void checkCorrectQualityofCojuredItemsWithOneQuality(){
+		//Arrange
+		GildedRose.getList().add(new Item("Conjured Mana Cake", 3, 1));
+		//Act
+		GildedRose.updateQuality();
+		int result = GildedRose.getList().get(6).getQuality();
+		//Assert
+		assertEquals(0,result);
+	}
+	
+	@Test
+	public void checkCorrectQualityofCojuredItemsIfSellDatePassedAndQualityIsThree(){
+		//Arrange
+		GildedRose.getList().add(new Item("Conjured Mana Cake", 0, 3));
+		//Act
+		GildedRose.updateQuality();
+		int result = GildedRose.getList().get(6).getQuality();
+		//Assert
+		assertEquals(0,result);
+	}
 }
