@@ -46,6 +46,9 @@ public class GildedRoseTest {
 	assertEquals(14,GildedRose.items.get(4).getSellIn());
 	assertEquals(21,GildedRose.items.get(4).getQuality());
 	
+	assertEquals(2,GildedRose.items.get(5).getSellIn());
+	assertEquals(4,GildedRose.items.get(5).getQuality());
+	
 	}
 	
 	@Test
@@ -74,5 +77,36 @@ public class GildedRoseTest {
 		
 		assertEquals(11,GildedRose.items.get(4).getSellIn());
 		assertEquals(24,GildedRose.items.get(4).getQuality());
+		
+		GildedRose.updateQuality();
+		
+		assertEquals(10,GildedRose.items.get(4).getSellIn());
+		assertEquals(26,GildedRose.items.get(4).getQuality());
+		
+		for(int i=0;i<5;i++){GildedRose.updateQuality();}
+		
+		assertEquals(5,GildedRose.items.get(4).getSellIn());
+		assertEquals(37,GildedRose.items.get(4).getQuality());
+		
+		for(int i=0;i<6;i++){GildedRose.updateQuality();}
+		
+		assertEquals(-1,GildedRose.items.get(4).getSellIn());
+		assertEquals(0,GildedRose.items.get(4).getQuality());
+	}
+	
+	@Test
+	public void testOver50(){
+		
+		for(int i=0;i<51;i++){GildedRose.updateQuality();}
+		
+		assertEquals(-49,GildedRose.items.get(1).getSellIn());
+		assertEquals(50,GildedRose.items.get(1).getQuality());
+		
+		GildedRose.items.add(new Item("Backstage passes to a TAFKAL80E3 concert", 15, 50));
+		
+		GildedRose.updateQuality();
+		
+		assertEquals(14,GildedRose.items.get(6).getSellIn());
+		assertEquals(50,GildedRose.items.get(6).getQuality());
 	}
 }

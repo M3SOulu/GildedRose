@@ -8,7 +8,7 @@ public class GildedRose {
 
 	public static List<Item> items = null;
 	
-	private static final String[] SPECIAL_ITEM={"Normal","Aged Brie","Sulfuras","Backstage passes"," Conjured"};
+	private static final String[] SPECIAL_ITEM={"Normal","Aged Brie","Sulfuras","Backstage passes","Conjured"};
 
 	public GildedRose(){
 		
@@ -25,6 +25,7 @@ public class GildedRose {
 			
 			String type=specialItemDetector(item);
 			
+			
 			if(type.equals(SPECIAL_ITEM[0])){
 				
 				updateNormalItem(item);
@@ -32,6 +33,15 @@ public class GildedRose {
 			}else if(type.equals(SPECIAL_ITEM[1])){
 				
 				updateAgedBrieItem(item);
+			
+			//SPECIAL_ITEM[2]="Sulfuras" nothing happen
+			}else if(type.equals(SPECIAL_ITEM[3])){
+				
+				updateBackStageItem(item);
+				
+			}else if(type.equals(SPECIAL_ITEM[4])){
+				
+				updateConjuredItem(item);
 			}
 			
 			
@@ -45,23 +55,16 @@ public class GildedRose {
  */
  static String specialItemDetector(Item item){
 		
-		String type="";
+		String type=SPECIAL_ITEM[0];
 		
-		int index=1;
-		
-		while(!item.getName().contains(SPECIAL_ITEM[index]) && index<SPECIAL_ITEM.length-1){
+		for(int i=0;i<SPECIAL_ITEM.length;i++){
 			
-			index++;
-		}
-		
-		if(index==SPECIAL_ITEM.length-1){
-			
-			type=SPECIAL_ITEM[0];
-			
-		}else{
-			
-			type=SPECIAL_ITEM[index];
-			
+			if(item.getName().contains(SPECIAL_ITEM[i])){
+				
+				type=SPECIAL_ITEM[i];
+				break;
+			}
+				
 		}
 		return type;
 	}
@@ -96,7 +99,62 @@ public class GildedRose {
 	private static void updateAgedBrieItem(Item item){
 		
 		item.setSellIn(item.getSellIn()-1);
-		item.setQuality(item.getQuality()+1);
-	}	
+		
+		if(item.getQuality()<50){
+			
+			item.setQuality(item.getQuality()+1);
+		}
+		
+
+	}
+	
+	/**
+	 * update quality of a Backstage item
+	 * @param item
+	 */
+	private static void updateBackStageItem(Item item){
+		
+		item.setSellIn(item.getSellIn()-1);
+		
+		if(item.getSellIn()<=0){
+			
+			item.setQuality(0);		
+			
+		}else if(item.getSellIn()<=5){
+			
+			item.setQuality(item.getQuality()+3);
+			
+		}else if(item.getSellIn()<=10){
+			
+			item.setQuality(item.getQuality()+2);
+			
+		}else{
+			
+			item.setQuality(item.getQuality()+1);
+		}
+		
+		if(item.getQuality()>50)
+			item.setQuality(50);
+			
+		
+	}
+	
+	private static void updateConjuredItem(Item item){
+		
+		item.setSellIn(item.getSellIn()-1);
+		
+		if(item.getSellIn()>=0){
+			
+			if(item.getQuality()>0)
+				item.setQuality(item.getQuality()-2);
+			
+		}else{
+			
+			item.setQuality(item.getQuality()-4);
+		}
+		
+		if(item.getQuality()<0)
+			item.setQuality(0);
+	}
 
 }
