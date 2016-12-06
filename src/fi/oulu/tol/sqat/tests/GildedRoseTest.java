@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import fi.oulu.tol.sqat.ConjuredItem;
 import fi.oulu.tol.sqat.GildedRose;
 import fi.oulu.tol.sqat.Item;
 
@@ -32,7 +33,7 @@ public class GildedRoseTest {
 	}
 	
 	@Test
-	public void updatingQualityOfAnExpiredItemDecreasesTwiceAsFast(){
+	public void qualityOfAnExpiredItemDecreasesTwiceAsFast(){
 		//Arrange
 		GildedRose.items.add(new Item("Conjured Mana Cake", 0, 6));
 		//Act
@@ -147,4 +148,44 @@ public class GildedRoseTest {
 		assertEquals(0, GildedRose.items.get(0).getQuality());
 	}
 	
+	@Test
+	public void qualityOfAConjuredItemDecreasesTwiceAsFast(){
+		//Arrange
+		GildedRose.items.add(new ConjuredItem("Conjured item", 10, 10));
+		//Act
+		GildedRose.updateQuality();
+		//Assert
+		assertEquals(8, GildedRose.items.get(0).getQuality());
+		
+	}
+	
+	@Test
+	public void qualityofAnExpiredConjuredItemDecreasesBy4(){
+		//Arrange
+		GildedRose.items.add(new ConjuredItem("Conjured item", 0, 10));
+		//Act
+		GildedRose.updateQuality();
+		//Assert
+		assertEquals(6, GildedRose.items.get(0).getQuality());
+	}
+	
+	@Test
+	public void ifQualityOfAConjuredItemIs0ItDoesntDecrease(){
+		//Arrange
+		GildedRose.items.add(new ConjuredItem("Conjured item", 3, 0));
+		//Act
+		GildedRose.updateQuality();
+		//Assert
+		assertEquals(0, GildedRose.items.get(0).getQuality());
+	}
+	
+	@Test
+	public void ifQualityofAnExpiredConjuredItemDecreasesIs1ItDecreasesOnlyBy1(){
+		//Arrange
+		GildedRose.items.add(new ConjuredItem("Conjured item", 3, 1));
+		//Act
+		GildedRose.updateQuality();
+		//Assert
+		assertEquals(0, GildedRose.items.get(0).getQuality());
+	}
 }
